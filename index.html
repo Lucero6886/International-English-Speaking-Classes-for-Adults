@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigating Work-Life Balance | Adult ESL Lesson</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif']
+                    },
+                    colors: {
+                        corpDark: '#0F172A',
+                        corpBlue: '#2563EB',
+                        corpIndigo: '#4F46E5',
+                        corpTeal: '#0D9488',
+                        softBg: '#F8FAFC',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F8FAFC;
+            color: #334155;
+            scroll-behavior: smooth;
+        }
+
+        .glass-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid #E2E8F0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+        }
+
+        .expandable-content {
+            display: none;
+            animation: slideDown 0.3s ease-out forwards;
+        }
+
+        .expandable-content.active {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Game Styles */
+        .game-btn { transition: all 0.2s; }
+        .game-btn.selected { background-color: #EEF2FF; border-color: #4F46E5; transform: scale(1.02); }
+        .game-btn.matched { background-color: #ECFDF5; border-color: #059669; color: #065F46; pointer-events: none; opacity: 0.7;}
+        .game-btn.error { animation: shake 0.4s; background-color: #FEF2F2; border-color: #DC2626; }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F1F5F9; }
+        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+    </style>
+</head>
+<body class="antialiased pb-24">
+
+    <!-- Top Progress Bar -->
+    <div class="fixed top-0 left-0 w-full h-1.5 bg-slate-200 z-50">
+        <div id="lessonProgress" class="h-full bg-gradient-to-r from-corpBlue to-corpIndigo w-0 transition-all duration-500"></div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="max-w-5xl mx-auto px-4 py-8 sm:px-6 lg:px-8 space-y-12">
+
+        <!-- HEADER SECTION -->
+        <header class="text-center space-y-6 pt-6">
+            <div class="inline-flex items-center bg-indigo-50 px-4 py-1.5 rounded-full border border-indigo-100 text-corpIndigo font-semibold text-sm uppercase tracking-wide">
+                <i class="fa-solid fa-video mr-2"></i> Zoom Interactive Lesson
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-corpDark tracking-tight font-display break-words">
+                Navigating <span class="text-corpBlue">Work-Life Balance</span>
+            </h1>
+            
+            <div class="flex flex-wrap justify-center gap-3 text-sm font-medium text-slate-600">
+                <span class="bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-200"><i class="fa-solid fa-user-tie text-corpTeal mr-2"></i> Adults (18+)</span>
+                <span class="bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-200"><i class="fa-solid fa-layer-group text-corpTeal mr-2"></i> Level: A2-B2</span>
+                <span class="bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-200"><i class="fa-solid fa-clock text-corpTeal mr-2"></i> 60 Mins</span>
+            </div>
+
+            <div class="glass-card p-6 md:p-8 mt-6 text-left border-l-4 border-l-corpIndigo">
+                <h3 class="text-xl font-bold text-corpDark mb-4 font-display"><i class="fa-solid fa-bullseye text-corpIndigo mr-2"></i> Learning Objectives</h3>
+                <ul class="grid md:grid-cols-3 gap-4 text-slate-700 font-medium">
+                    <li class="flex items-start"><i class="fa-solid fa-check text-corpTeal mt-1 mr-2"></i> Use vocabulary related to stress, relaxation, and routines.</li>
+                    <li class="flex items-start"><i class="fa-solid fa-check text-corpTeal mt-1 mr-2"></i> Answer professional and personal questions fluently.</li>
+                    <li class="flex items-start"><i class="fa-solid fa-check text-corpTeal mt-1 mr-2"></i> Express and defend opinions about modern work culture.</li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- SECTION 1: WARM-UP -->
+        <section class="scroll-mt-20" id="sec-1">
+            <div class="flex items-center gap-3 mb-6 border-b border-slate-200 pb-2">
+                <div class="bg-blue-100 w-10 h-10 flex items-center justify-center rounded-lg text-corpBlue text-xl"><i class="fa-solid fa-mug-hot"></i></div>
+                <h2 class="text-2xl font-bold text-corpDark font-display">1. Warm-Up Discussion</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <!-- Q1 -->
+                <div class="glass-card p-6 flex flex-col justify-between">
+                    <p class="text-lg font-semibold text-slate-800 mb-4">1. How do you relax after a long day of work or study? 🛋️</p>
+                    <div>
+                        <button class="text-corpBlue font-semibold text-sm hover:underline flex items-center" onclick="toggleElement('wu-1')">
+                            <i class="fa-solid fa-lightbulb mr-2"></i> View Example
+                        </button>
+                        <div id="wu-1" class="expandable-content mt-3 bg-blue-50 p-4 rounded border border-blue-100 text-slate-700 text-sm md:text-base break-words">
+                            <p><strong>Example:</strong> "I usually relax by listening to a podcast or cooking dinner while drinking a glass of water."</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Q2 -->
+                <div class="glass-card p-6 flex flex-col justify-between">
+                    <p class="text-lg font-semibold text-slate-800 mb-4">2. Are you a morning person or a night owl? 🦉</p>
+                    <div>
+                        <button class="text-corpBlue font-semibold text-sm hover:underline flex items-center" onclick="toggleElement('wu-2')">
+                            <i class="fa-solid fa-lightbulb mr-2"></i> View Example
+                        </button>
+                        <div id="wu-2" class="expandable-content mt-3 bg-blue-50 p-4 rounded border border-blue-100 text-slate-700 text-sm md:text-base break-words">
+                            <p><strong>Example:</strong> "I am definitely a morning person. I feel most productive right after I wake up and have coffee."</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Q3 -->
+                <div class="glass-card p-6 flex flex-col justify-between">
+                    <p class="text-lg font-semibold text-slate-800 mb-4">3. Do you prefer working from home or in an office? 💻</p>
+                    <div>
+                        <button class="text-corpBlue font-semibold text-sm hover:underline flex items-center" onclick="toggleElement('wu-3')">
+                            <i class="fa-solid fa-lightbulb mr-2"></i> View Example
+                        </button>
+                        <div id="wu-3" class="expandable-content mt-3 bg-blue-50 p-4 rounded border border-blue-100 text-slate-700 text-sm md:text-base break-words">
+                            <p><strong>Example:</strong> "I prefer a hybrid model. I like working from home for focus, but the office is better for meetings."</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Q4 -->
+                <div class="glass-card p-6 flex flex-col justify-between">
+                    <p class="text-lg font-semibold text-slate-800 mb-4">4. What is your favorite day of the week and why? 📅</p>
+                    <div>
+                        <button class="text-corpBlue font-semibold text-sm hover:underline flex items-center" onclick="toggleElement('wu-4')">
+                            <i class="fa-solid fa-lightbulb mr-2"></i> View Example
+                        </button>
+                        <div id="wu-4" class="expandable-content mt-3 bg-blue-50 p-4 rounded border border-blue-100 text-slate-700 text-sm md:text-base break-words">
+                            <p><strong>Example:</strong> "Friday is my favorite because the weekend is starting, and the mood in the office is very relaxed."</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Q5 -->
+                <div class="glass-card p-6 md:col-span-2 flex flex-col justify-between">
+                    <p class="text-lg font-semibold text-slate-800 mb-4">5. How much coffee or tea do you drink every day to stay awake? ☕</p>
+                    <div>
+                        <button class="text-corpBlue font-semibold text-sm hover:underline flex items-center" onclick="toggleElement('wu-5')">
+                            <i class="fa-solid fa-lightbulb mr-2"></i> View Example
+                        </button>
+                        <div id="wu-5" class="expandable-content mt-3 bg-blue-50 p-4 rounded border border-blue-100 text-slate-700 text-sm md:text-base break-words">
+                            <p><strong>Example:</strong> "I try to limit myself to two cups of coffee a day, otherwise I can't sleep at night."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <label class="flex items-center gap-2 mt-4 text-slate-500 font-medium cursor-pointer w-max hover:text-corpIndigo transition">
+                <input type="checkbox" class="section-check w-5 h-5 text-corpIndigo rounded border-slate-300 focus:ring-corpIndigo focus:ring-2" onchange="updateProgress()"> Mark section as completed
+            </label>
+        </section>
+
+        <!-- SECTION 2: VOCABULARY -->
+        <section class="scroll-mt-20" id="sec-2">
+            <div class="flex items-center gap-3 mb-6 border-b border-slate-200 pb-2">
+                <div class="bg-indigo-100 w-10 h-10 flex items-center justify-center rounded-lg text-corpIndigo text-xl"><i class="fa-solid fa-book"></i></div>
+                <h2 class="text-2xl font-bold text-corpDark font-display">2. Professional Vocabulary</h2>
+            </div>
+            <p class="text-slate-600 mb-6 text-base md:text-lg">Click "Show Usage" to see the word in context. Click the speaker icon to hear the pronunciation.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="vocab-grid">
+                <!-- Vocab cards generated via JS -->
+            </div>
+            <label class="flex items-center gap-2 mt-4 text-slate-500 font-medium cursor-pointer w-max hover:text-corpIndigo transition">
+                <input type="checkbox" class="section-check w-5 h-5 text-corpIndigo rounded border-slate-300 focus:ring-corpIndigo focus:ring-2" onchange="updateProgress()"> Mark section as completed
+            </label>
+        </section>
+
+        <!-- SECTIONS 3, 4, 5: MAIN SPEAKING, IDEAS & SAMPLE ANSWERS -->
+        <section class="scroll-mt-20" id="sec-3">
+            <div class="flex items-center gap-3 mb-6 border-b border-slate-200 pb-2">
+                <div class="bg-teal-100 w-10 h-10 flex items-center justify-center rounded-lg text-corpTeal text-xl"><i class="fa-solid fa-comments"></i></div>
+                <h2 class="text-2xl font-bold text-corpDark font-display">3. Speaking Practice</h2>
+            </div>
+            <p class="text-slate-600 mb-6 text-base md:text-lg">Discuss the questions below. Use the <strong>Idea Bank</strong> to brainstorm, and check the <strong>Sample Answers</strong> to see examples for different proficiency levels.</p>
+
+            <div class="space-y-5" id="speaking-questions-container">
+                <!-- Questions generated via JS -->
+            </div>
+            <label class="flex items-center gap-2 mt-4 text-slate-500 font-medium cursor-pointer w-max hover:text-corpIndigo transition">
+                <input type="checkbox" class="section-check w-5 h-5 text-corpIndigo rounded border-slate-300 focus:ring-corpIndigo focus:ring-2" onchange="updateProgress()"> Mark section as completed
+            </label>
+        </section>
+
+        <!-- SECTION 6: ROLE-PLAY -->
+        <section class="scroll-mt-20" id="sec-6">
+            <div class="flex items-center gap-3 mb-6 border-b border-slate-200 pb-2">
+                <div class="bg-purple-100 w-10 h-10 flex items-center justify-center rounded-lg text-purple-600 text-xl"><i class="fa-solid fa-user-group"></i></div>
+                <h2 class="text-2xl font-bold text-corpDark font-display">4. Workplace Role-Play</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Scenario 1 -->
+                <div class="glass-card p-6 border-t-4 border-t-purple-500 flex flex-col">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Scenario 1: Asking for Time Off</h3>
+                    <p class="text-slate-600 mb-4 text-sm md:text-base min-h-[4rem] flex-grow">You have been feeling stressed and overworked lately. You need to ask your manager for a few days off to recharge.</p>
+                    
+                    <button class="w-full bg-purple-50 text-purple-700 font-semibold py-2.5 rounded-lg border border-purple-200 hover:bg-purple-100 transition flex justify-center items-center text-sm md:text-base" onclick="toggleElement('rp-1')">
+                        <i class="fa-solid fa-chevron-down mr-2"></i> View Roles & Hints
+                    </button>
+                    
+                    <div id="rp-1" class="expandable-content mt-4 space-y-4">
+                        <div class="bg-slate-50 p-4 rounded border border-slate-200">
+                            <p class="font-bold text-corpDark text-base md:text-sm"><i class="fa-solid fa-user text-purple-500 mr-2"></i> Role A: Employee</p>
+                            <ul class="list-disc pl-5 text-sm md:text-base text-slate-600 mt-2 space-y-1">
+                                <li>Explain that you are feeling close to burnout.</li>
+                                <li>Request specific dates for your time off.</li>
+                                <li><strong>Phrase:</strong> "I'd like to request some time off next week because..."</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded border border-slate-200">
+                            <p class="font-bold text-corpDark text-base md:text-sm"><i class="fa-solid fa-user-tie text-purple-500 mr-2"></i> Role B: Manager</p>
+                            <ul class="list-disc pl-5 text-sm md:text-base text-slate-600 mt-2 space-y-1">
+                                <li>Express concern for their well-being.</li>
+                                <li>Ask how their current projects will be handled.</li>
+                                <li><strong>Phrase:</strong> "I understand. Who will cover your urgent tasks while you're away?"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scenario 2 -->
+                <div class="glass-card p-6 border-t-4 border-t-corpBlue flex flex-col">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Scenario 2: Setting Boundaries</h3>
+                    <p class="text-slate-600 mb-4 text-sm md:text-base min-h-[4rem] flex-grow">A colleague keeps sending you work emails late at night and expects immediate replies. Discuss this issue with them.</p>
+                    
+                    <button class="w-full bg-blue-50 text-corpBlue font-semibold py-2.5 rounded-lg border border-blue-200 hover:bg-blue-100 transition flex justify-center items-center text-sm md:text-base" onclick="toggleElement('rp-2')">
+                        <i class="fa-solid fa-chevron-down mr-2"></i> View Roles & Hints
+                    </button>
+                    
+                    <div id="rp-2" class="expandable-content mt-4 space-y-4">
+                        <div class="bg-slate-50 p-4 rounded border border-slate-200">
+                            <p class="font-bold text-corpDark text-base md:text-sm"><i class="fa-solid fa-briefcase text-corpBlue mr-2"></i> Role A: You</p>
+                            <ul class="list-disc pl-5 text-sm md:text-base text-slate-600 mt-2 space-y-1">
+                                <li>Acknowledge their hard work, but state your boundaries.</li>
+                                <li>Politely say you unplug after 7 PM.</li>
+                                <li><strong>Phrase:</strong> "I noticed you sent emails late last night. I usually disconnect after 7 PM to..."</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded border border-slate-200">
+                            <p class="font-bold text-corpDark text-base md:text-sm"><i class="fa-solid fa-laptop text-corpBlue mr-2"></i> Role B: Colleague</p>
+                            <ul class="list-disc pl-5 text-sm md:text-base text-slate-600 mt-2 space-y-1">
+                                <li>Explain that you are a 'night owl' and prefer working late.</li>
+                                <li>Agree to a compromise (e.g., scheduling emails).</li>
+                                <li><strong>Phrase:</strong> "I'm sorry, I just work better at night. I didn't mean to pressure you."</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <label class="flex items-center gap-2 mt-4 text-slate-500 font-medium cursor-pointer w-max hover:text-corpIndigo transition">
+                <input type="checkbox" class="section-check w-5 h-5 text-corpIndigo rounded border-slate-300 focus:ring-corpIndigo focus:ring-2" onchange="updateProgress()"> Mark section as completed
+            </label>
+        </section>
+
+        <!-- SECTION 7: FLUENCY BUILDER -->
+        <section class="scroll-mt-20" id="sec-7">
+            <div class="flex items-center gap-3 mb-6 border-b border-slate-200 pb-2">
+                <div class="bg-rose-100 w-10 h-10 flex items-center justify-center rounded-lg text-rose-500 text-xl"><i class="fa-solid fa-bolt"></i></div>
+                <h2 class="text-2xl font-bold text-corpDark font-display">5. Fluency Builder</h2>
+            </div>
+            <p class="text-slate-600 mb-6 text-base md:text-lg">Use these professional sentence starters to structure your arguments and sound more fluent.</p>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div class="bg-white border border-slate-200 rounded-xl p-4 text-center shadow-sm hover:border-corpIndigo hover:shadow-md transition cursor-pointer">
+                    <p class="font-bold text-slate-400 text-xs uppercase tracking-widest mb-1">Opinion</p>
+                    <p class="font-semibold text-corpDark break-words text-sm md:text-base">"From my perspective..."</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 text-center shadow-sm hover:border-corpIndigo hover:shadow-md transition cursor-pointer">
+                    <p class="font-bold text-slate-400 text-xs uppercase tracking-widest mb-1">Strong Belief</p>
+                    <p class="font-semibold text-corpDark break-words text-sm md:text-base">"I strongly believe that..."</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 text-center shadow-sm hover:border-corpIndigo hover:shadow-md transition cursor-pointer">
+                    <p class="font-bold text-slate-400 text-xs uppercase tracking-widest mb-1">Contrast</p>
+                    <p class="font-semibold text-corpDark break-words text-sm md:text-base">"On the other hand..."</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 text-center shadow-sm hover:border-corpIndigo hover:shadow-md transition cursor-pointer">
+                    <p class="font-bold text-slate-400 text-xs uppercase tracking-widest mb-1">Example</p>
+                    <p class="font-semibold text-corpDark break-words text-sm md:text-base">"For instance..."</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 text-center shadow-sm hover:border-corpIndigo hover:shadow-md transition cursor-pointer">
+                    <p class="font-bold text-slate-400 text-xs uppercase tracking-widest mb-1">Habit</p>
+                    <p class="font-semibold text-corpDark break-words text-sm md:text-base">"Usually, I tend to..."</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 text-center shadow-sm hover:border-corpIndigo hover:shadow-md transition cursor-pointer">
+                    <p class="font-bold text-slate-400 text-xs uppercase tracking-widest mb-1">Concession</p>
+                    <p class="font-semibold text-corpDark break-words text-sm md:text-base">"That's a good point, but..."</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 text-center shadow-sm hover:border-corpIndigo hover:shadow-md transition cursor-pointer">
+                    <p class="font-bold text-slate-400 text-xs uppercase tracking-widest mb-1">Honesty</p>
+                    <p class="font-semibold text-corpDark break-words text-sm md:text-base">"To be completely honest..."</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 text-center shadow-sm hover:border-corpIndigo hover:shadow-md transition cursor-pointer">
+                    <p class="font-bold text-slate-400 text-xs uppercase tracking-widest mb-1">Condition</p>
+                    <p class="font-semibold text-corpDark break-words text-sm md:text-base">"It really depends on..."</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 text-center shadow-sm hover:border-corpIndigo hover:shadow-md transition cursor-pointer">
+                    <p class="font-bold text-slate-400 text-xs uppercase tracking-widest mb-1">Evidence</p>
+                    <p class="font-semibold text-corpDark break-words text-sm md:text-base">"A prime example is..."</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 text-center shadow-sm hover:border-corpIndigo hover:shadow-md transition cursor-pointer">
+                    <p class="font-bold text-slate-400 text-xs uppercase tracking-widest mb-1">Conclusion</p>
+                    <p class="font-semibold text-corpDark break-words text-sm md:text-base">"In the long run..."</p>
+                </div>
+            </div>
+            <label class="flex items-center gap-2 mt-4 text-slate-500 font-medium cursor-pointer w-max hover:text-corpIndigo transition">
+                <input type="checkbox" class="section-check w-5 h-5 text-corpIndigo rounded border-slate-300 focus:ring-corpIndigo focus:ring-2" onchange="updateProgress()"> Mark section as completed
+            </label>
+        </section>
+
+        <!-- SECTION 8: REVIEW GAME -->
+        <section class="scroll-mt-20" id="sec-8">
+            <div class="flex items-center gap-3 mb-6 border-b border-slate-200 pb-2">
+                <div class="bg-amber-100 w-10 h-10 flex items-center justify-center rounded-lg text-amber-600 text-xl"><i class="fa-solid fa-puzzle-piece"></i></div>
+                <h2 class="text-2xl font-bold text-corpDark font-display">6. Concept Matching</h2>
+            </div>
+            <p class="text-slate-600 mb-6 text-base md:text-lg">Click a vocabulary word, then click its correct definition. Match them all to clear the board!</p>
+
+            <div class="grid grid-cols-2 gap-4 md:gap-8" id="matching-game">
+                <!-- Column 1: Words -->
+                <div class="space-y-3" id="word-col"></div>
+                <!-- Column 2: Definitions -->
+                <div class="space-y-3" id="def-col"></div>
+            </div>
+            
+            <div class="mt-6 text-center">
+                <button onclick="initGame()" class="bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold py-2 px-6 rounded-full transition text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-400">
+                    <i class="fa-solid fa-rotate-right mr-2"></i> Reset Game
+                </button>
+            </div>
+            <label class="flex items-center gap-2 mt-4 text-slate-500 font-medium cursor-pointer w-max hover:text-corpIndigo transition">
+                <input type="checkbox" class="section-check w-5 h-5 text-corpIndigo rounded border-slate-300 focus:ring-corpIndigo focus:ring-2" onchange="updateProgress()"> Mark section as completed
+            </label>
+        </section>
+
+        <!-- SECTION 9: SELF-REFLECTION -->
+        <section class="scroll-mt-20" id="sec-9">
+            <div class="flex items-center gap-3 mb-6 border-b border-slate-200 pb-2">
+                <div class="bg-emerald-100 w-10 h-10 flex items-center justify-center rounded-lg text-emerald-600 text-xl"><i class="fa-solid fa-scale-balanced"></i></div>
+                <h2 class="text-2xl font-bold text-corpDark font-display">7. Self-Reflection</h2>
+            </div>
+            
+            <div class="glass-card p-6 md:p-8">
+                <p class="text-slate-600 mb-6 font-medium text-base md:text-lg">Evaluate your speaking performance today. Choose the emoji that best represents how you feel.</p>
+                
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-4">
+                        <span class="font-medium text-slate-700 text-sm md:text-base">1. Did I express my opinions clearly? 🗣️</span>
+                        <div class="flex gap-4 text-2xl">
+                            <button class="hover:scale-125 transition grayscale hover:grayscale-0 opacity-50 hover:opacity-100 focus:outline-none" onclick="selectEmoji(this)">🤩</button>
+                            <button class="hover:scale-125 transition grayscale hover:grayscale-0 opacity-50 hover:opacity-100 focus:outline-none" onclick="selectEmoji(this)">🤔</button>
+                            <button class="hover:scale-125 transition grayscale hover:grayscale-0 opacity-50 hover:opacity-100 focus:outline-none" onclick="selectEmoji(this)">🫠</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-4">
+                        <span class="font-medium text-slate-700 text-sm md:text-base">2. Did I use the new vocabulary? 📚</span>
+                        <div class="flex gap-4 text-2xl">
+                            <button class="hover:scale-125 transition grayscale hover:grayscale-0 opacity-50 hover:opacity-100 focus:outline-none" onclick="selectEmoji(this)">🤩</button>
+                            <button class="hover:scale-125 transition grayscale hover:grayscale-0 opacity-50 hover:opacity-100 focus:outline-none" onclick="selectEmoji(this)">🤔</button>
+                            <button class="hover:scale-125 transition grayscale hover:grayscale-0 opacity-50 hover:opacity-100 focus:outline-none" onclick="selectEmoji(this)">🫠</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-4">
+                        <span class="font-medium text-slate-700 text-sm md:text-base">3. Was my pronunciation clear? 🎤</span>
+                        <div class="flex gap-4 text-2xl">
+                            <button class="hover:scale-125 transition grayscale hover:grayscale-0 opacity-50 hover:opacity-100 focus:outline-none" onclick="selectEmoji(this)">🤩</button>
+                            <button class="hover:scale-125 transition grayscale hover:grayscale-0 opacity-50 hover:opacity-100 focus:outline-none" onclick="selectEmoji(this)">🤔</button>
+                            <button class="hover:scale-125 transition grayscale hover:grayscale-0 opacity-50 hover:opacity-100 focus:outline-none" onclick="selectEmoji(this)">🫠</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-4">
+                        <span class="font-medium text-slate-700 text-sm md:text-base">4. Did I elaborate on my answers (give reasons)? 📈</span>
+                        <div class="flex gap-4 text-2xl">
+                            <button class="hover:scale-125 transition grayscale hover:grayscale-0 opacity-50 hover:opacity-100 focus:outline-none" onclick="selectEmoji(this)">🤩</button>
+                            <button class="hover:scale-125 transition grayscale hover:grayscale-0 opacity-50 hover:opacity-100 focus:outline-none" onclick="selectEmoji(this)">🤔</button>
+                            <button class="hover:scale-125 transition grayscale hover:grayscale-0 opacity-50 hover:opacity-100 focus:outline-none" onclick="selectEmoji(this)">🫠</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pb-2">
+                        <span class="font-medium text-slate-700 text-sm md:text-base">5. Did I feel confident speaking today? 💼</span>
+                        <div class="flex gap-4 text-2xl">
+                            <button class="hover:scale-125 transition grayscale hover:grayscale-0 opacity-50 hover:opacity-100 focus:outline-none" onclick="selectEmoji(this)">🤩</button>
+                            <button class="hover:scale-125 transition grayscale hover:grayscale-0 opacity-50 hover:opacity-100 focus:outline-none" onclick="selectEmoji(this)">🤔</button>
+                            <button class="hover:scale-125 transition grayscale hover:grayscale-0 opacity-50 hover:opacity-100 focus:outline-none" onclick="selectEmoji(this)">🫠</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <label class="flex items-center gap-2 mt-4 text-slate-500 font-medium cursor-pointer w-max hover:text-corpIndigo transition">
+                <input type="checkbox" class="section-check w-5 h-5 text-corpIndigo rounded border-slate-300 focus:ring-corpIndigo focus:ring-2" onchange="updateProgress()"> Mark section as completed
+            </label>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="text-center pt-8 pb-4 mt-8 border-t border-slate-200">
+            <p class="text-slate-500 font-medium text-sm md:text-base tracking-widest mb-1">
+                &copy; 2026 <strong>Lucero English System</strong>. All rights reserved.
+            </p>
+            <p class="text-slate-400 text-sm font-medium tracking-wider">
+                Compiled and authored by <span class="text-corpBlue font-bold">Mr. Lucero</span>
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- Floating Progress Tracker -->
+    <div class="fixed bottom-6 right-6 bg-white p-3 rounded-xl shadow-lg border border-slate-200 z-50 flex items-center gap-4">
+        <div>
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Progress</p>
+            <p class="text-lg font-extrabold text-corpDark"><span id="progressText">0</span>/7</p>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-corpIndigo text-lg">
+            <i class="fa-solid fa-chart-line"></i>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- 1. Expand/Collapse Logic ---
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.classList.contains('active')) {
+                el.classList.remove('active');
+            } else {
+                el.classList.add('active');
+            }
+        }
+
+        // --- 2. TTS Logic ---
+        function speakText(text) {
+            if (!('speechSynthesis' in window)) {
+                alert("Text-to-speech is not supported in this browser.");
+                return;
+            }
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // --- 3. Vocabulary Data & Generation ---
+        const vocabData = [
+            { word: "Work-life balance", def: "A state of equilibrium where a person equally prioritizes the demands of one's career and personal life.", ex: "Achieving a healthy work-life balance is essential to prevent burnout." },
+            { word: "Burnout", def: "Physical or mental collapse caused by overwork or stress.", ex: "After working 60 hours a week for months, he suffered from severe burnout." },
+            { word: "Productive", def: "Producing or able to produce large amounts of goods, crops, or other commodities.", ex: "I feel much more productive in the morning after a cup of coffee." },
+            { word: "Distraction", def: "A thing that prevents someone from giving full attention to something else.", ex: "Social media is a major distraction when trying to focus on work." },
+            { word: "Prioritize", def: "Designate or treat (something) as more important than other things.", ex: "You need to prioritize your tasks so you finish the most urgent ones first." },
+            { word: "Unplug", def: "To relax and disconnect from electronic devices and work-related communications.", ex: "On weekends, I try to unplug completely and spend time in nature." },
+            { word: "Overwhelming", def: "Very great in amount; difficult to manage or deal with.", ex: "The number of emails in my inbox on Monday morning is often overwhelming." },
+            { word: "Remote work", def: "A working style that allows professionals to work outside of a traditional office environment.", ex: "Remote work gives me the flexibility to manage my personal errands." }
+        ];
+
+        function renderVocab() {
+            const grid = document.getElementById('vocab-grid');
+            vocabData.forEach((v, index) => {
+                const cardHtml = `
+                    <div class="glass-card p-5 flex flex-col h-full bg-white">
+                        <h3 class="text-xl font-bold text-corpIndigo mb-2">${v.word}</h3>
+                        <p class="text-sm text-slate-600 mb-4 flex-grow min-h-[48px] break-words">${v.def}</p>
+                        
+                        <div class="flex gap-2 mt-auto">
+                            <button class="flex-grow bg-indigo-50 text-corpIndigo text-sm font-semibold py-1.5 px-2 rounded hover:bg-indigo-100 transition focus:outline-none focus:ring-2 focus:ring-indigo-300" onclick="toggleElement('voc-${index}')">
+                                Show Usage
+                            </button>
+                            <button class="bg-slate-100 text-slate-600 py-1.5 px-3 rounded hover:bg-slate-200 transition focus:outline-none focus:ring-2 focus:ring-slate-300" onclick="speakText('${v.word}')" title="Listen">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+                        
+                        <div id="voc-${index}" class="expandable-content mt-3 bg-slate-50 p-3 rounded border border-slate-100 text-sm text-slate-700 italic break-words">
+                            "${v.ex}"
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += cardHtml;
+            });
+        }
+
+        // --- 4. Main Speaking Questions Data & Generation ---
+        const speakingData = [
+            { level: "Easy", q: "How many hours a day do you usually work or study?", ideas: ["Standard 8 hours", "Part-time", "Overtime", "Varies every day"], s_short: "I usually work about 8 hours a day, from 9 AM to 5 PM.", s_long: "I typically work a standard 8-hour shift, but sometimes I have to put in overtime if we have a strict deadline approaching." },
+            { level: "Easy", q: "Do you check your emails or messages on the weekend?", ideas: ["Never", "Only for emergencies", "Too often", "Yes, out of habit"], s_short: "No, I try not to check work emails on the weekend.", s_long: "To be honest, I check my emails out of habit on Saturdays. I am trying to stop doing this so I can truly unplug." },
+            { level: "Easy", q: "What do you usually do during your lunch break?", ideas: ["Eat at my desk", "Go for a walk", "Chat with colleagues", "Scroll social media"], s_short: "I usually eat my lunch and read the news on my phone.", s_long: "I try to leave my desk during my lunch break. I usually go for a short walk outside to get some fresh air and clear my mind." },
+            
+            { level: "Medium", q: "What are the biggest distractions when you work from home?", ideas: ["Social media", "Family members/pets", "Household chores", "The TV"], s_short: "The biggest distraction is my smartphone.", s_long: "When I work from home, household chores are a major distraction. I see dishes in the sink and feel the need to clean instead of working." },
+            { level: "Medium", q: "How do you know when you are close to 'burnout'?", ideas: ["Always feeling tired", "Getting angry easily", "Lack of motivation", "Poor sleep"], s_short: "I know I am close to burnout when I feel tired every morning.", s_long: "I can tell I am approaching burnout when I lose motivation for tasks I usually enjoy, and I start getting easily irritated by small issues." },
+            { level: "Medium", q: "What is the best way to separate your work life from your personal life?", ideas: ["Turn off notifications", "Have a separate workspace", "Strict schedule", "Change clothes"], s_short: "The best way is to turn off your phone after work.", s_long: "The most effective method is having a dedicated workspace. When I leave that room at 6 PM, I close the door and officially end my workday." },
+            { level: "Medium", q: "How can a company help its employees stay healthy and happy?", ideas: ["Flexible hours", "Wellness programs", "No weekend emails", "More vacation days"], s_short: "A company can offer flexible working hours.", s_long: "Companies can help by promoting a culture that respects boundaries, such as a strict 'no weekend emails' policy and offering mental health days." },
+            
+            { level: "Opinion", q: "Do you think a 4-day work week is a good idea? Why or why not?", ideas: ["Yes, more rest", "No, too much work packed into 4 days", "Good for mental health", "Depends on the industry"], s_short: "Yes, I think it's a great idea because we get a longer weekend.", s_long: "I strongly believe a 4-day work week is beneficial. Studies show it increases productivity because employees are more rested and less stressed." },
+            { level: "Opinion", q: "Is it possible to be highly successful in your career without sacrificing your personal life?", ideas: ["Yes, with good time management", "No, success requires sacrifice", "It depends on the definition of success", "Only if you own the business"], s_short: "Yes, if you manage your time well.", s_long: "It depends on how you define success. If you want to be a top CEO, you probably have to sacrifice personal time. But you can have a very comfortable, successful career with proper boundaries." },
+            { level: "Opinion", q: "\"Technology makes us work more, not less.\" Do you agree with this statement?", ideas: ["Agree, we are always connected", "Disagree, automation saves time", "Agree, expectations are higher", "It's a double-edged sword"], s_short: "I agree because our phones keep us connected to the office 24/7.", s_long: "I completely agree. While technology like AI saves us time on manual tasks, smartphones mean we are constantly reachable, so the workday never truly ends." }
+        ];
+
+        function renderSpeakingQs() {
+            const container = document.getElementById('speaking-questions-container');
+            speakingData.forEach((item, index) => {
+                let badgeColor = item.level === 'Easy' ? 'bg-teal-50 text-corpTeal border-corpTeal' : 
+                                 item.level === 'Medium' ? 'bg-blue-50 text-corpBlue border-corpBlue' : 'bg-indigo-50 text-corpIndigo border-corpIndigo';
+                
+                let ideasHtml = item.ideas.map(idea => `<li class="flex items-start"><i class="fa-solid fa-angle-right text-slate-400 mt-1 mr-2 text-xs"></i> <span class="break-words">${idea}</span></li>`).join('');
+
+                const html = `
+                    <div class="glass-card p-5 md:p-6 border-l-4 border-l-slate-200 hover:border-l-corpBlue transition-colors">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded border uppercase tracking-wider ${badgeColor}">${item.level}</span>
+                            <span class="text-slate-400 font-bold text-sm uppercase">Q${index + 1}</span>
+                        </div>
+                        <p class="text-lg font-semibold text-slate-800 mb-4 break-words">${item.q}</p>
+                        
+                        <div class="flex flex-wrap gap-2">
+                            <button class="bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 text-sm font-medium py-1.5 px-3 rounded transition focus:outline-none focus:ring-2 focus:ring-slate-300" onclick="toggleElement('ideas-${index}')">
+                                <i class="fa-regular fa-lightbulb text-amber-500 mr-1.5"></i> Idea Bank
+                            </button>
+                            <button class="bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 text-sm font-medium py-1.5 px-3 rounded transition focus:outline-none focus:ring-2 focus:ring-slate-300" onclick="toggleElement('ans-${index}')">
+                                <i class="fa-regular fa-comments text-corpBlue mr-1.5"></i> Sample Answers
+                            </button>
+                        </div>
+
+                        <!-- Expandable Idea Bank -->
+                        <div id="ideas-${index}" class="expandable-content mt-4 bg-slate-50 p-4 rounded-lg border border-slate-100">
+                            <p class="font-semibold text-slate-700 mb-2 text-sm">Consider these points:</p>
+                            <ul class="text-slate-600 text-sm space-y-1.5">${ideasHtml}</ul>
+                        </div>
+
+                        <!-- Expandable Sample Answers -->
+                        <div id="ans-${index}" class="expandable-content mt-4 bg-blue-50/50 p-4 rounded-lg border border-blue-100 space-y-4">
+                            <div>
+                                <p class="font-bold text-slate-500 text-xs uppercase tracking-wider mb-1">Direct Answer (A2/B1)</p>
+                                <p class="text-slate-700 italic text-sm md:text-base break-words">"${item.s_short}"</p>
+                            </div>
+                            <div class="border-t border-blue-100 pt-3">
+                                <p class="font-bold text-corpBlue text-xs uppercase tracking-wider mb-1">Detailed Answer (B2)</p>
+                                <p class="text-slate-700 italic text-sm md:text-base break-words">"${item.s_long}"</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+
+        // --- 5. Review Game Logic ---
+        const gameData = [
+            { id: 1, word: "Burnout", def: "Exhaustion caused by prolonged stress or overwork." },
+            { id: 2, word: "Prioritize", def: "To treat something as more important than other things." },
+            { id: 3, word: "Unplug", def: "To disconnect from electronic devices." },
+            { id: 4, word: "Overwhelming", def: "Very great in amount; difficult to manage." }
+        ];
+
+        let selectedWord = null;
+        let selectedDef = null;
+
+        function initGame() {
+            const wordCol = document.getElementById('word-col');
+            const defCol = document.getElementById('def-col');
+            wordCol.innerHTML = '';
+            defCol.innerHTML = '';
+            selectedWord = null;
+            selectedDef = null;
+
+            // Shuffle arrays
+            let words = [...gameData].sort(() => Math.random() - 0.5);
+            let defs = [...gameData].sort(() => Math.random() - 0.5);
+
+            words.forEach(item => {
+                let btn = document.createElement('button');
+                btn.className = 'game-btn w-full bg-white border border-slate-200 text-corpDark font-semibold py-3 px-4 rounded-lg shadow-sm text-left text-sm md:text-base break-words focus:outline-none focus:ring-2 focus:ring-corpIndigo';
+                btn.innerText = item.word;
+                btn.onclick = () => selectItem('word', item.id, btn);
+                wordCol.appendChild(btn);
+            });
+
+            defs.forEach(item => {
+                let btn = document.createElement('button');
+                btn.className = 'game-btn w-full bg-white border border-slate-200 text-slate-600 font-normal py-3 px-4 rounded-lg shadow-sm text-left text-xs md:text-sm break-words focus:outline-none focus:ring-2 focus:ring-corpIndigo';
+                btn.innerText = item.def;
+                btn.onclick = () => selectItem('def', item.id, btn);
+                defCol.appendChild(btn);
+            });
+        }
+
+        function selectItem(type, id, btn) {
+            if (btn.classList.contains('matched')) return;
+
+            // Clear previous selection of same type
+            let siblings = btn.parentElement.children;
+            for(let el of siblings) {
+                if(!el.classList.contains('matched')) {
+                    el.classList.remove('selected', 'error');
+                }
+            }
+
+            btn.classList.add('selected');
+
+            if (type === 'word') {
+                selectedWord = { id, btn };
+            } else {
+                selectedDef = { id, btn };
+            }
+
+            checkMatch();
+        }
+
+        function checkMatch() {
+            if (selectedWord && selectedDef) {
+                if (selectedWord.id === selectedDef.id) {
+                    // Match
+                    selectedWord.btn.classList.replace('selected', 'matched');
+                    selectedDef.btn.classList.replace('selected', 'matched');
+                    selectedWord = null;
+                    selectedDef = null;
+                } else {
+                    // Mismatch
+                    let wBtn = selectedWord.btn;
+                    let dBtn = selectedDef.btn;
+                    wBtn.classList.replace('selected', 'error');
+                    dBtn.classList.replace('selected', 'error');
+                    
+                    setTimeout(() => {
+                        wBtn.classList.remove('error');
+                        dBtn.classList.remove('error');
+                    }, 500);
+
+                    selectedWord = null;
+                    selectedDef = null;
+                }
+            }
+        }
+
+        // --- 6. Reflection Emojis ---
+        function selectEmoji(btn) {
+            let siblings = btn.parentElement.children;
+            for(let el of siblings) {
+                el.classList.add('grayscale', 'opacity-50');
+                el.classList.remove('grayscale-0', 'scale-125', 'opacity-100');
+            }
+            btn.classList.remove('grayscale', 'opacity-50');
+            btn.classList.add('grayscale-0', 'scale-125', 'opacity-100');
+        }
+
+        // --- 7. Progress Tracker Logic ---
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.section-check');
+            const total = checkboxes.length;
+            let checked = 0;
+            checkboxes.forEach(cb => {
+                if(cb.checked) checked++;
+            });
+
+            document.getElementById('progressText').innerText = checked;
+            
+            const percentage = (checked / total) * 100;
+            document.getElementById('lessonProgress').style.width = percentage + '%';
+
+            if (checked === total) {
+                setTimeout(() => alert("🎉 Excellent! You have successfully navigated the Work-Life Balance lesson!"), 200);
+            }
+        }
+
+        // Initialize dynamic content on load
+        window.onload = () => {
+            renderVocab();
+            renderSpeakingQs();
+            initGame();
+        };
+
+    </script>
+</body>
+</html>
