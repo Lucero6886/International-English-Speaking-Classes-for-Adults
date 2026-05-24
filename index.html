@@ -3,1176 +3,857 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive English Lesson: Technology & Social Media</title>
+    <title>Lucero English System | Interactive Speaking: Modern Travel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-
     <style>
-        :root {
-            /* Tech Theme: Electric Blue, Cyan, and Deep Slate */
-            --primary: #0284c7; /* Electric Blue */
-            --primary-light: #e0f2fe;
-            --primary-hover: #0369a1;
-            --secondary: #0891b2; /* Cyan/Teal */
-            --secondary-light: #cffafe;
-            --accent: #f59e0b; /* Amber */
-            --accent-light: #fef3c7;
-            --purple: #7c3aed; /* Violet */
-            --purple-light: #ede9fe;
-            --dark: #0f172a; /* Deep Slate */
-            --text: #334155;
-            --text-light: #64748b;
-            --bg: #f8fafc;
-            --white: #ffffff;
-            --border: #cbd5e1;
-            --radius-md: 10px;
-            --radius-lg: 16px;
-            --radius-full: 9999px;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
-            --shadow-hover: 0 10px 15px -3px rgba(0,0,0,0.2);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            overflow-wrap: break-word;
-            word-wrap: break-word;
-        }
-
         body {
-            font-family: 'Nunito', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            font-size: 1.15rem; /* Optimal for Zoom/Projectors */
-            padding-top: 80px; /* Space for fixed progress bar */
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        h1, h2, h3, h4 {
-            color: var(--dark);
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--border);
-            margin-bottom: 25px;
-        }
-
-        p {
-            margin-bottom: 15px;
-        }
-
-        section {
-            background-color: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 35px;
-            margin-bottom: 40px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border);
-        }
-
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: var(--white);
-            box-shadow: var(--shadow-md);
-            z-index: 1000;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .progress-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--text-light);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .progress-item input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--secondary);
-            cursor: pointer;
-        }
-
-        .progress-item.completed {
-            color: var(--secondary);
-        }
-
-        .header-section {
-            text-align: center;
-            background: linear-gradient(135deg, var(--dark), var(--primary));
-            color: var(--white);
-            padding: 50px 30px;
-            border-radius: var(--radius-lg);
-            margin-bottom: 40px;
-            margin-top: 20px;
-        }
-
-        .header-section h1 {
-            color: var(--white);
-            font-size: 3rem;
-            margin-bottom: 15px;
-            line-height: 1.2;
-        }
-
-        .badge-container {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .badge {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 6px 16px;
-            border-radius: var(--radius-full);
-            font-weight: 700;
-            font-size: 0.95rem;
-            border: 1px solid rgba(255,255,255,0.3);
-            backdrop-filter: blur(4px);
-        }
-
-        .objectives {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            border-radius: var(--radius-md);
-            text-align: left;
-            max-width: 700px;
-            margin: 0 auto;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .btn {
-            background-color: var(--primary);
-            color: var(--white);
-            border: none;
-            padding: 10px 22px;
-            border-radius: var(--radius-full);
-            font-size: 1.05rem;
-            font-weight: 700;
-            font-family: inherit;
-            cursor: pointer;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--primary-light);
-            color: var(--primary-hover);
-        }
-
-        .btn-secondary {
-            background-color: var(--secondary-light);
-            color: var(--secondary);
-            border: 2px solid var(--secondary);
-        }
-
-        .accordion-item {
-            margin-bottom: 15px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-        }
-
-        .accordion-header {
-            width: 100%;
-            text-align: left;
-            padding: 16px 20px;
-            background-color: var(--white);
-            border: none;
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--dark);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: var(--transition);
-        }
-
-        .accordion-header:hover {
-            background-color: var(--bg);
-        }
-
-        .accordion-header::after {
-            content: '▼';
-            font-size: 0.8rem;
-            transition: transform 0.3s ease;
-        }
-
-        .accordion-item.active .accordion-header::after {
-            transform: rotate(180deg);
-        }
-
-        .accordion-content {
-            padding: 0 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            background-color: var(--bg);
-            font-size: 1.1rem;
-        }
-
-        .accordion-item.active .accordion-content {
-            padding: 15px 20px;
-            max-height: 1000px;
-        }
-
-        .vocab-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .vocab-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 20px;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .vocab-card:hover {
-            border-color: var(--primary);
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-4px);
-        }
-
-        .vocab-word {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .vocab-def {
-            display: none;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px dashed var(--border);
-            font-size: 1rem;
-            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            background-color: #f0fdfa; /* Soft mint/teal background for travel theme */
+            color: #0f172a;
         }
         
-        .vocab-example {
-            display: none;
-            margin-top: 12px;
-            font-style: italic;
-            color: var(--text-light);
-            background: var(--primary-light);
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 1rem;
+        /* Smooth transitions for interactive elements */
+        .expand-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            opacity: 0;
+        }
+        
+        .expand-content.open {
+            max-height: 2000px; 
+            opacity: 1;
         }
 
-        .vocab-card.show-content .vocab-def,
-        .vocab-card.show-content .vocab-example {
-            display: block;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .question-card {
-            background: var(--white);
-            border-radius: var(--radius-md);
-            border: 2px solid var(--primary-light);
-            padding: 25px;
-            margin-bottom: 25px;
-        }
-
-        .question-title {
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .difficulty-badge {
-            font-size: 0.8rem;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 3px;
-        }
-
-        .diff-easy { background-color: var(--secondary-light); color: var(--secondary); }
-        .diff-med { background-color: var(--accent-light); color: #b45309; }
-        .diff-hard { background-color: var(--purple-light); color: var(--purple); }
-
-        .helper-buttons {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
-        }
-
-        .helper-content {
-            display: none;
-            padding: 18px;
-            border-radius: var(--radius-md);
-            margin-bottom: 10px;
-            font-size: 1.05rem;
-            line-height: 1.6;
-        }
-
-        .helper-content.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .box-ideas { background-color: var(--accent-light); border: 1px solid #fde047; color: #b45309; }
-        .box-short { background-color: var(--secondary-light); border: 1px solid #a5f3fc; color: #0891b2; }
-        .box-extended { background-color: var(--primary-light); border: 1px solid #bae6fd; color: #0369a1; }
-
-        .flashcard-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            perspective: 1000px;
-        }
-
+        /* Flashcard styles - Enhanced for overflow protection */
         .flashcard {
-            background-color: transparent;
-            width: 100%;
-            height: 160px;
+            perspective: 1000px;
             cursor: pointer;
         }
-
+        
         .flashcard-inner {
             position: relative;
             width: 100%;
             height: 100%;
             text-align: center;
-            transition: transform 0.6s;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
             transform-style: preserve-3d;
         }
-
+        
         .flashcard.flipped .flashcard-inner {
             transform: rotateY(180deg);
         }
-
+        
         .flashcard-front, .flashcard-back {
             position: absolute;
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            border-radius: var(--radius-md);
-            padding: 20px;
-            box-shadow: var(--shadow-sm);
-            font-size: 1.15rem;
-            line-height: 1.5;
-        }
-
-        .flashcard-front {
-            background-color: var(--primary-light);
-            border: 2px solid #7dd3fc;
-            color: var(--primary-hover);
-            font-weight: 800;
-        }
-
-        .flashcard-back {
-            background-color: var(--primary);
-            color: var(--white);
-            transform: rotateY(180deg);
-            font-weight: 600;
-        }
-
-        .game-board {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            position: relative;
+            border-radius: 1.25rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            overflow-y: auto; 
         }
         
-        @media (max-width: 650px) {
-            .game-board { grid-template-columns: 1fr; }
+        .flashcard-front {
+            background-color: #ffffff;
+            border: 2px solid #ccfbf1;
+        }
+        
+        .flashcard-back {
+            background-color: #f0fdf4;
+            transform: rotateY(180deg);
+            border: 2px solid #86efac;
+            color: #14532d;
         }
 
-        .game-col {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+        /* Hide scrollbar for cleaner look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #5eead4; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #14b8a6; }
 
-        .game-btn {
-            background: var(--white);
-            border: 2px solid var(--border);
-            padding: 15px;
-            border-radius: var(--radius-md);
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 1.05rem;
-            font-weight: 600;
-            transition: var(--transition);
-            text-align: left;
-            color: var(--text);
+        /* Custom Checkbox */
+        .lucero-check:checked + div {
+            background-color: #0d9488;
+            border-color: #0d9488;
         }
-
-        .game-btn:hover {
-            border-color: var(--primary);
-            background: var(--primary-light);
-        }
-
-        .game-btn.selected {
-            background-color: var(--primary);
-            color: var(--white);
-            border-color: var(--primary);
-        }
-
-        .game-btn.correct {
-            background-color: var(--secondary);
-            color: var(--white);
-            border-color: var(--secondary);
-        }
-
-        .game-btn.incorrect {
-            animation: shake 0.5s;
-            background-color: #ef4444;
-            color: var(--white);
-            border-color: #ef4444;
-        }
-
-        .message-box {
-            display: none;
-            background-color: var(--secondary);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            border-radius: var(--radius-md);
-            margin-top: 25px;
-            font-weight: 800;
-            font-size: 1.3rem;
-            box-shadow: var(--shadow-md);
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
-
-        .reflection-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 18px;
-            background: var(--bg);
-            border-radius: var(--radius-md);
-            margin-bottom: 12px;
-            font-weight: 600;
-            border: 1px solid var(--border);
-        }
-
-        .reflection-item input[type="checkbox"] {
-            width: 22px;
-            height: 22px;
-            accent-color: var(--primary);
-        }
-
-        footer {
-            text-align: center;
-            padding: 35px;
-            margin-top: 50px;
-            color: var(--text-light);
-            font-size: 1rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-brand {
-            font-weight: 800;
-            color: var(--dark);
-            font-size: 1.2rem;
-            margin-bottom: 8px;
+        .lucero-check:checked + div svg {
+            display: block;
         }
     </style>
 </head>
-<body>
+<body class="antialiased flex flex-col min-h-screen">
 
-    <div class="progress-bar" id="progress-bar">
-        <label class="progress-item"><input type="checkbox" id="chk-warmup" onchange="updateProgress()"> 1. Warm-Up</label>
-        <label class="progress-item"><input type="checkbox" id="chk-vocab" onchange="updateProgress()"> 2. Vocabulary</label>
-        <label class="progress-item"><input type="checkbox" id="chk-speaking" onchange="updateProgress()"> 3. Speaking</label>
-        <label class="progress-item"><input type="checkbox" id="chk-roleplay" onchange="updateProgress()"> 4. Role-Play</label>
-        <label class="progress-item"><input type="checkbox" id="chk-fluency" onchange="updateProgress()"> 5. Fluency</label>
-        <label class="progress-item"><input type="checkbox" id="chk-game" onchange="updateProgress()"> 6. Review</label>
-        <label class="progress-item"><input type="checkbox" id="chk-reflection" onchange="updateProgress()"> 7. Reflection</label>
-    </div>
+    <header class="sticky top-0 z-50 bg-gradient-to-r from-teal-950 via-teal-900 to-emerald-900 shadow-xl border-b-4 border-teal-500 px-4 py-4 text-white">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-4 w-full md:w-auto">
+                <div class="bg-white/10 p-3 rounded-xl backdrop-blur-md border border-white/20 shadow-inner flex items-center justify-center text-2xl">
+                    🌍
+                </div>
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight drop-shadow-md">
+                        Lucero English System
+                    </h1>
+                    <p class="text-teal-200 text-sm md:text-base font-medium tracking-wide">Interactive Speaking Lesson: Modern Travel</p>
+                </div>
+            </div>
+            <div class="w-full md:w-1/3 flex flex-col gap-1">
+                <div class="flex justify-between items-center">
+                    <span class="text-xs font-semibold text-teal-200 uppercase tracking-wider" id="progress-text">Progress: 0%</span>
+                </div>
+                <div class="w-full bg-teal-950/50 rounded-full h-3 border border-teal-800/50 overflow-hidden shadow-inner">
+                    <div id="progress-bar" class="bg-gradient-to-r from-teal-400 to-emerald-300 h-full rounded-full transition-all duration-700 ease-out" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <div class="container">
+    <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 mt-10 mb-20 space-y-16 w-full">
+
+        <section class="bg-gradient-to-br from-teal-50 to-emerald-50 border-2 border-teal-200 rounded-3xl p-8 md:p-10 shadow-lg relative overflow-hidden">
+            <div class="absolute -right-6 -top-6 text-[12rem] opacity-5 transform rotate-12">✈️</div>
+            <h2 class="text-3xl font-extrabold text-teal-900 mb-6 flex items-center gap-3 drop-shadow-sm">
+                <span class="bg-teal-100 p-2 rounded-xl">🎯</span> Learning Objectives
+            </h2>
+            <p class="text-xl text-teal-800 mb-6 font-medium">By the end of this 60-minute session, you will be able to:</p>
+            <ul class="space-y-4">
+                <li class="flex items-start gap-4 bg-white/60 p-4 rounded-2xl border border-teal-100/50 backdrop-blur-sm">
+                    <span class="bg-teal-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0 shadow-md text-lg">1</span>
+                    <span class="text-slate-800 text-lg leading-relaxed"><strong>Discuss</strong> travel preferences, past experiences, and cultural differences fluently.</span>
+                </li>
+                <li class="flex items-start gap-4 bg-white/60 p-4 rounded-2xl border border-teal-100/50 backdrop-blur-sm">
+                    <span class="bg-teal-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0 shadow-md text-lg">2</span>
+                    <span class="text-slate-800 text-lg leading-relaxed"><strong>Express and defend opinions</strong> on modern travel trends like ecotourism and overtourism.</span>
+                </li>
+                <li class="flex items-start gap-4 bg-white/60 p-4 rounded-2xl border border-teal-100/50 backdrop-blur-sm">
+                    <span class="bg-teal-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0 shadow-md text-lg">3</span>
+                    <span class="text-slate-800 text-lg leading-relaxed"><strong>Use targeted B2 vocabulary</strong> (e.g., itinerary, tourist trap, culture shock) accurately in context.</span>
+                </li>
+            </ul>
+        </section>
+
+        <section id="section-1" class="space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b-4 border-slate-200 pb-4 gap-4">
+                <h2 class="text-3xl font-extrabold text-slate-800 flex items-center gap-3">
+                    <span class="bg-slate-100 p-2 rounded-xl shadow-sm">🧊</span> 1. Warm-Up
+                </h2>
+                <label class="flex items-center gap-3 cursor-pointer bg-white px-5 py-2.5 rounded-xl border-2 border-slate-200 hover:border-teal-500 hover:bg-teal-50 transition-all shadow-sm group">
+                    <div class="relative flex items-center justify-center">
+                        <input type="checkbox" class="section-check lucero-check opacity-0 absolute h-6 w-6 cursor-pointer" data-section="1">
+                        <div class="w-6 h-6 border-2 border-slate-300 rounded bg-white transition-colors flex items-center justify-center group-hover:border-teal-400">
+                            <svg class="w-4 h-4 text-white hidden pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                    </div>
+                    <span class="text-base font-bold text-slate-600 group-hover:text-teal-700">Mark Complete</span>
+                </label>
+            </div>
+            
+            <p class="text-xl text-slate-600 font-medium">Answer these quick questions to get your speaking brain ready! Click the button to see a sample answer.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Warm up items -->
+                <div class="bg-white p-6 rounded-2xl border-2 border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+                    <p class="font-bold text-xl text-slate-800 mb-5 leading-snug break-words">🏖️ Do you prefer relaxing beach holidays or active city tours?</p>
+                    <div>
+                        <button onclick="toggleElement('wu-1')" class="text-base bg-teal-50 text-teal-700 font-bold px-5 py-3 rounded-xl hover:bg-teal-100 transition-colors w-full text-left flex justify-between items-center border border-teal-100">
+                            View Example <span class="text-xl">👇</span>
+                        </button>
+                        <div id="wu-1" class="expand-content mt-3 text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-200 text-lg leading-relaxed break-words">
+                            "I definitely prefer active city tours. I love exploring museums and trying local street food."
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-2xl border-2 border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+                    <p class="font-bold text-xl text-slate-800 mb-5 leading-snug break-words">🧳 Are you a light packer, or do you always pack too much?</p>
+                    <div>
+                        <button onclick="toggleElement('wu-2')" class="text-base bg-teal-50 text-teal-700 font-bold px-5 py-3 rounded-xl hover:bg-teal-100 transition-colors w-full text-left flex justify-between items-center border border-teal-100">
+                            View Example <span class="text-xl">👇</span>
+                        </button>
+                        <div id="wu-2" class="expand-content mt-3 text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-200 text-lg leading-relaxed break-words">
+                            "I'm a chronic overpacker. I always bring extra clothes just in case the weather changes!"
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-2xl border-2 border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+                    <p class="font-bold text-xl text-slate-800 mb-5 leading-snug break-words">✈️ Window seat or aisle seat on an airplane?</p>
+                    <div>
+                        <button onclick="toggleElement('wu-3')" class="text-base bg-teal-50 text-teal-700 font-bold px-5 py-3 rounded-xl hover:bg-teal-100 transition-colors w-full text-left flex justify-between items-center border border-teal-100">
+                            View Example <span class="text-xl">👇</span>
+                        </button>
+                        <div id="wu-3" class="expand-content mt-3 text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-200 text-lg leading-relaxed break-words">
+                            "Always the aisle seat. I like being able to stand up and stretch my legs without bothering anyone."
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-2xl border-2 border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+                    <p class="font-bold text-xl text-slate-800 mb-5 leading-snug break-words">📸 Do you take a lot of photos when you travel?</p>
+                    <div>
+                        <button onclick="toggleElement('wu-4')" class="text-base bg-teal-50 text-teal-700 font-bold px-5 py-3 rounded-xl hover:bg-teal-100 transition-colors w-full text-left flex justify-between items-center border border-teal-100">
+                            View Example <span class="text-xl">👇</span>
+                        </button>
+                        <div id="wu-4" class="expand-content mt-3 text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-200 text-lg leading-relaxed break-words">
+                            "I take a few photos for memories, but I try to put my phone away and just enjoy the moment."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-2" class="space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b-4 border-slate-200 pb-4 gap-4">
+                <h2 class="text-3xl font-extrabold text-slate-800 flex items-center gap-3">
+                    <span class="bg-slate-100 p-2 rounded-xl shadow-sm">📚</span> 2. Core Vocabulary
+                </h2>
+                <label class="flex items-center gap-3 cursor-pointer bg-white px-5 py-2.5 rounded-xl border-2 border-slate-200 hover:border-teal-500 hover:bg-teal-50 transition-all shadow-sm group">
+                    <div class="relative flex items-center justify-center">
+                        <input type="checkbox" class="section-check lucero-check opacity-0 absolute h-6 w-6 cursor-pointer" data-section="2">
+                        <div class="w-6 h-6 border-2 border-slate-300 rounded bg-white transition-colors flex items-center justify-center group-hover:border-teal-400">
+                            <svg class="w-4 h-4 text-white hidden pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                    </div>
+                    <span class="text-base font-bold text-slate-600 group-hover:text-teal-700">Mark Complete</span>
+                </label>
+            </div>
+            
+            <p class="text-xl text-slate-600 font-medium">Review these 8 essential B2 travel terms. Click "Show Example" to see how they are used in context.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="vocab-container">
+                <!-- Hardcoded Vocab for structural integrity -->
+                <div class="bg-white border-2 border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-2xl font-extrabold text-emerald-800 break-words">1. Itinerary (n.)</h3>
+                        <span class="text-2xl opacity-50">📋</span>
+                    </div>
+                    <p class="text-lg text-slate-600 mb-5 leading-relaxed">A detailed plan or schedule of a journey, including the route and places to visit.</p>
+                    <button onclick="toggleElement('voc-1')" class="w-full sm:w-auto text-sm font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-5 py-2.5 rounded-xl hover:bg-emerald-100 transition-colors border border-emerald-100">Show Example</button>
+                    <div id="voc-1" class="expand-content mt-4 text-lg text-slate-700 italic border-l-4 border-emerald-400 pl-4 py-2 bg-slate-50 rounded-r-xl break-words">
+                        "We have a very packed itinerary for tomorrow, starting with a museum tour at 8 AM."
+                    </div>
+                </div>
+
+                <div class="bg-white border-2 border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-2xl font-extrabold text-emerald-800 break-words">2. Tourist trap (n.)</h3>
+                        <span class="text-2xl opacity-50">🪤</span>
+                    </div>
+                    <p class="text-lg text-slate-600 mb-5 leading-relaxed">A place that attracts many tourists and charges unusually high prices.</p>
+                    <button onclick="toggleElement('voc-2')" class="w-full sm:w-auto text-sm font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-5 py-2.5 rounded-xl hover:bg-emerald-100 transition-colors border border-emerald-100">Show Example</button>
+                    <div id="voc-2" class="expand-content mt-4 text-lg text-slate-700 italic border-l-4 border-emerald-400 pl-4 py-2 bg-slate-50 rounded-r-xl break-words">
+                        "Avoid the restaurants near the main square; they are massive tourist traps."
+                    </div>
+                </div>
+
+                <div class="bg-white border-2 border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-2xl font-extrabold text-emerald-800 break-words">3. Off the beaten path</h3>
+                        <span class="text-2xl opacity-50">🧭</span>
+                    </div>
+                    <p class="text-lg text-slate-600 mb-5 leading-relaxed">A phrase meaning to go to a place that is not well known or popular with tourists.</p>
+                    <button onclick="toggleElement('voc-3')" class="w-full sm:w-auto text-sm font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-5 py-2.5 rounded-xl hover:bg-emerald-100 transition-colors border border-emerald-100">Show Example</button>
+                    <div id="voc-3" class="expand-content mt-4 text-lg text-slate-700 italic border-l-4 border-emerald-400 pl-4 py-2 bg-slate-50 rounded-r-xl break-words">
+                        "We rented a car so we could explore villages off the beaten path."
+                    </div>
+                </div>
+
+                <div class="bg-white border-2 border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-2xl font-extrabold text-emerald-800 break-words">4. Ecotourism (n.)</h3>
+                        <span class="text-2xl opacity-50">🍃</span>
+                    </div>
+                    <p class="text-lg text-slate-600 mb-5 leading-relaxed">Tourism directed toward natural environments, intended to support conservation efforts.</p>
+                    <button onclick="toggleElement('voc-4')" class="w-full sm:w-auto text-sm font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-5 py-2.5 rounded-xl hover:bg-emerald-100 transition-colors border border-emerald-100">Show Example</button>
+                    <div id="voc-4" class="expand-content mt-4 text-lg text-slate-700 italic border-l-4 border-emerald-400 pl-4 py-2 bg-slate-50 rounded-r-xl break-words">
+                        "Costa Rica is famous for its ecotourism, offering incredible wildlife experiences."
+                    </div>
+                </div>
+
+                <div class="bg-white border-2 border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-2xl font-extrabold text-emerald-800 break-words">5. Immerse (v.)</h3>
+                        <span class="text-2xl opacity-50">🌊</span>
+                    </div>
+                    <p class="text-lg text-slate-600 mb-5 leading-relaxed">To involve yourself completely in a culture, activity, or environment.</p>
+                    <button onclick="toggleElement('voc-5')" class="w-full sm:w-auto text-sm font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-5 py-2.5 rounded-xl hover:bg-emerald-100 transition-colors border border-emerald-100">Show Example</button>
+                    <div id="voc-5" class="expand-content mt-4 text-lg text-slate-700 italic border-l-4 border-emerald-400 pl-4 py-2 bg-slate-50 rounded-r-xl break-words">
+                        "To learn the language faster, you should immerse yourself in the local culture."
+                    </div>
+                </div>
+
+                <div class="bg-white border-2 border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-2xl font-extrabold text-emerald-800 break-words">6. Culture shock (n.)</h3>
+                        <span class="text-2xl opacity-50">😲</span>
+                    </div>
+                    <p class="text-lg text-slate-600 mb-5 leading-relaxed">The feeling of confusion and anxiety experienced when visiting a completely different society.</p>
+                    <button onclick="toggleElement('voc-6')" class="w-full sm:w-auto text-sm font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-5 py-2.5 rounded-xl hover:bg-emerald-100 transition-colors border border-emerald-100">Show Example</button>
+                    <div id="voc-6" class="expand-content mt-4 text-lg text-slate-700 italic border-l-4 border-emerald-400 pl-4 py-2 bg-slate-50 rounded-r-xl break-words">
+                        "Moving to Tokyo from a small town gave me massive culture shock at first."
+                    </div>
+                </div>
+                
+                <div class="bg-white border-2 border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-2xl font-extrabold text-emerald-800 break-words">7. Jet lag (n.)</h3>
+                        <span class="text-2xl opacity-50">🥱</span>
+                    </div>
+                    <p class="text-lg text-slate-600 mb-5 leading-relaxed">Extreme tiredness felt after a long flight across different time zones.</p>
+                    <button onclick="toggleElement('voc-7')" class="w-full sm:w-auto text-sm font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-5 py-2.5 rounded-xl hover:bg-emerald-100 transition-colors border border-emerald-100">Show Example</button>
+                    <div id="voc-7" class="expand-content mt-4 text-lg text-slate-700 italic border-l-4 border-emerald-400 pl-4 py-2 bg-slate-50 rounded-r-xl break-words">
+                        "I slept all day yesterday because I was suffering from terrible jet lag."
+                    </div>
+                </div>
+
+                <div class="bg-white border-2 border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-2xl font-extrabold text-emerald-800 break-words">8. Breathtaking (adj.)</h3>
+                        <span class="text-2xl opacity-50">✨</span>
+                    </div>
+                    <p class="text-lg text-slate-600 mb-5 leading-relaxed">Astonishingly beautiful or magnificent; taking your breath away.</p>
+                    <button onclick="toggleElement('voc-8')" class="w-full sm:w-auto text-sm font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-5 py-2.5 rounded-xl hover:bg-emerald-100 transition-colors border border-emerald-100">Show Example</button>
+                    <div id="voc-8" class="expand-content mt-4 text-lg text-slate-700 italic border-l-4 border-emerald-400 pl-4 py-2 bg-slate-50 rounded-r-xl break-words">
+                        "The view from the top of the mountain was absolutely breathtaking."
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-3" class="space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b-4 border-slate-200 pb-4 gap-4">
+                <h2 class="text-3xl font-extrabold text-slate-800 flex items-center gap-3">
+                    <span class="bg-slate-100 p-2 rounded-xl shadow-sm">🎙️</span> 3. Speaking Practice
+                </h2>
+                <label class="flex items-center gap-3 cursor-pointer bg-white px-5 py-2.5 rounded-xl border-2 border-slate-200 hover:border-teal-500 hover:bg-teal-50 transition-all shadow-sm group">
+                    <div class="relative flex items-center justify-center">
+                        <input type="checkbox" class="section-check lucero-check opacity-0 absolute h-6 w-6 cursor-pointer" data-section="3">
+                        <div class="w-6 h-6 border-2 border-slate-300 rounded bg-white transition-colors flex items-center justify-center group-hover:border-teal-400">
+                            <svg class="w-4 h-4 text-white hidden pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                    </div>
+                    <span class="text-base font-bold text-slate-600 group-hover:text-teal-700">Mark Complete</span>
+                </label>
+            </div>
+            
+            <p class="text-xl text-slate-600 font-medium bg-teal-50/50 p-4 rounded-xl border border-teal-100">Practice answering these questions out loud. If you get stuck, open the <strong class="text-amber-600">Idea Bank</strong> or look at the <strong class="text-indigo-600">Sample Answers</strong>.</p>
+
+            <div id="speaking-questions" class="space-y-8">
+                <!-- Javascript will inject the 10 questions here -->
+            </div>
+        </section>
+
+        <section id="section-4" class="space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b-4 border-slate-200 pb-4 gap-4">
+                <h2 class="text-3xl font-extrabold text-slate-800 flex items-center gap-3">
+                    <span class="bg-slate-100 p-2 rounded-xl shadow-sm">🎭</span> 4. Role-Play
+                </h2>
+                <label class="flex items-center gap-3 cursor-pointer bg-white px-5 py-2.5 rounded-xl border-2 border-slate-200 hover:border-teal-500 hover:bg-teal-50 transition-all shadow-sm group">
+                    <div class="relative flex items-center justify-center">
+                        <input type="checkbox" class="section-check lucero-check opacity-0 absolute h-6 w-6 cursor-pointer" data-section="4">
+                        <div class="w-6 h-6 border-2 border-slate-300 rounded bg-white transition-colors flex items-center justify-center group-hover:border-teal-400">
+                            <svg class="w-4 h-4 text-white hidden pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                    </div>
+                    <span class="text-base font-bold text-slate-600 group-hover:text-teal-700">Mark Complete</span>
+                </label>
+            </div>
+            
+            <p class="text-xl text-slate-600 font-medium">Practice these real-life scenarios with a partner, or practice both roles yourself to build confidence and fluency.</p>
+
+            <div class="grid grid-cols-1 gap-8">
+                <!-- Role Play 1 -->
+                <div class="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200 rounded-3xl p-8 shadow-md">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-5xl bg-white p-3 rounded-2xl shadow-sm">🏨</span>
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-amber-900 break-words">Scenario 1: Hotel Problems</h3>
+                    </div>
+                    <p class="text-xl text-amber-900 mb-6 leading-relaxed"><strong>The Situation:</strong> You have just arrived at your hotel after a long, exhausting flight. However, the receptionist says they cannot find your reservation in the system.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-white/80 p-6 rounded-2xl border-2 border-amber-100 shadow-sm">
+                            <h4 class="text-xl font-bold text-amber-900 mb-2 border-b border-amber-200 pb-2">Role A: The Guest</h4>
+                            <p class="text-lg text-amber-800">You are tired and suffering from jet lag. Politely but firmly explain that you booked online and show your confirmation email.</p>
+                        </div>
+                        <div class="bg-white/80 p-6 rounded-2xl border-2 border-amber-100 shadow-sm">
+                            <h4 class="text-xl font-bold text-amber-900 mb-2 border-b border-amber-200 pb-2">Role B: The Receptionist</h4>
+                            <p class="text-lg text-amber-800">Apologize for the inconvenience. Ask for their booking reference number and offer them a free drink while they wait.</p>
+                        </div>
+                    </div>
+
+                    <button onclick="toggleElement('rp-1')" class="bg-amber-500 text-white px-6 py-3 rounded-xl font-bold hover:bg-amber-600 transition-colors text-lg shadow-md hover:shadow-lg w-full sm:w-auto">
+                        Show Dialogue Hints 💬
+                    </button>
+                    <div id="rp-1" class="expand-content mt-6 bg-white p-6 rounded-2xl border-2 border-amber-200 text-lg space-y-4 text-slate-800 shadow-inner">
+                        <p><strong>Guest:</strong> "Excuse me, I'm checking in under the name Smith. I'm quite exhausted from my flight."</p>
+                        <p><strong>Receptionist:</strong> "Let me check... I'm so sorry, Mr. Smith, I can't seem to find your reservation in our system."</p>
+                        <p><strong>Guest:</strong> "That's strange. I booked it two months ago. Here is my confirmation email on my phone."</p>
+                        <p><strong>Receptionist:</strong> "Thank you. Could you read me the booking reference number? Please have a seat and a complimentary coffee while I sort this out."</p>
+                    </div>
+                </div>
+
+                <!-- Role Play 2 -->
+                <div class="bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200 rounded-3xl p-8 shadow-md">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-5xl bg-white p-3 rounded-2xl shadow-sm">🗺️</span>
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-indigo-900 break-words">Scenario 2: Planning the Itinerary</h3>
+                    </div>
+                    <p class="text-xl text-indigo-900 mb-6 leading-relaxed"><strong>The Situation:</strong> You and your friend are planning a trip to a new country. You have very different travel styles and need to reach a compromise.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-white/80 p-6 rounded-2xl border-2 border-indigo-100 shadow-sm">
+                            <h4 class="text-xl font-bold text-indigo-900 mb-2 border-b border-indigo-200 pb-2">Role A: The Adventurer</h4>
+                            <p class="text-lg text-indigo-800">You want to go off the beaten path, try extreme sports, and completely immerse yourself in nature.</p>
+                        </div>
+                        <div class="bg-white/80 p-6 rounded-2xl border-2 border-indigo-100 shadow-sm">
+                            <h4 class="text-xl font-bold text-indigo-900 mb-2 border-b border-indigo-200 pb-2">Role B: The Relaxer</h4>
+                            <p class="text-lg text-indigo-800">You want a stress-free itinerary, nice restaurants, and to avoid tourist traps. You just want to relax.</p>
+                        </div>
+                    </div>
+
+                    <button onclick="toggleElement('rp-2')" class="bg-indigo-500 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-600 transition-colors text-lg shadow-md hover:shadow-lg w-full sm:w-auto">
+                        Show Dialogue Hints 💬
+                    </button>
+                    <div id="rp-2" class="expand-content mt-6 bg-white p-6 rounded-2xl border-2 border-indigo-200 text-lg space-y-4 text-slate-800 shadow-inner">
+                        <p><strong>Adventurer:</strong> "I was thinking we could rent bikes and cycle through the mountains for the first three days."</p>
+                        <p><strong>Relaxer:</strong> "To be honest, that sounds a bit exhausting. I was hoping we could just find a nice resort and relax by the beach."</p>
+                        <p><strong>Adventurer:</strong> "But we should immerse ourselves in the local culture! Resorts are just tourist traps."</p>
+                        <p><strong>Relaxer:</strong> "How about a compromise? We can do your adventure trip for two days, but then we spend the weekend relaxing."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-5" class="space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b-4 border-slate-200 pb-4 gap-4">
+                <h2 class="text-3xl font-extrabold text-slate-800 flex items-center gap-3">
+                    <span class="bg-slate-100 p-2 rounded-xl shadow-sm">⚡</span> 5. Fluency Builder
+                </h2>
+                <label class="flex items-center gap-3 cursor-pointer bg-white px-5 py-2.5 rounded-xl border-2 border-slate-200 hover:border-teal-500 hover:bg-teal-50 transition-all shadow-sm group">
+                    <div class="relative flex items-center justify-center">
+                        <input type="checkbox" class="section-check lucero-check opacity-0 absolute h-6 w-6 cursor-pointer" data-section="5">
+                        <div class="w-6 h-6 border-2 border-slate-300 rounded bg-white transition-colors flex items-center justify-center group-hover:border-teal-400">
+                            <svg class="w-4 h-4 text-white hidden pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                    </div>
+                    <span class="text-base font-bold text-slate-600 group-hover:text-teal-700">Mark Complete</span>
+                </label>
+            </div>
+            
+            <p class="text-xl text-slate-600 font-medium">Use these sentence starters to sound more natural and fluent when telling travel stories. <strong class="text-teal-600">Click a card to flip it</strong> and see an example.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="fluency-cards">
+                <!-- Javascript will inject the 10 flashcards here -->
+            </div>
+        </section>
+
+        <section id="section-6" class="space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b-4 border-slate-200 pb-4 gap-4">
+                <h2 class="text-3xl font-extrabold text-slate-800 flex items-center gap-3">
+                    <span class="bg-slate-100 p-2 rounded-xl shadow-sm">🎮</span> 6. Review Game
+                </h2>
+                <label class="flex items-center gap-3 cursor-pointer bg-white px-5 py-2.5 rounded-xl border-2 border-slate-200 hover:border-teal-500 hover:bg-teal-50 transition-all shadow-sm group">
+                    <div class="relative flex items-center justify-center">
+                        <input type="checkbox" class="section-check lucero-check opacity-0 absolute h-6 w-6 cursor-pointer" data-section="6">
+                        <div class="w-6 h-6 border-2 border-slate-300 rounded bg-white transition-colors flex items-center justify-center group-hover:border-teal-400">
+                            <svg class="w-4 h-4 text-white hidden pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                    </div>
+                    <span class="text-base font-bold text-slate-600 group-hover:text-teal-700">Mark Complete</span>
+                </label>
+            </div>
+            
+            <p class="text-xl text-slate-600 font-medium">Test your memory! Match the correct definition to the vocabulary word.</p>
+
+            <div class="bg-gradient-to-b from-white to-slate-50 border-2 border-slate-200 rounded-3xl p-8 shadow-lg max-w-3xl mx-auto">
+                <div id="game-container" class="text-center">
+                    <div class="mb-4 text-sm font-extrabold text-teal-600 tracking-widest uppercase bg-teal-100 inline-block px-4 py-1.5 rounded-full" id="game-progress">Question 1 of 5</div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 min-h-[100px] flex items-center justify-center leading-relaxed break-words px-4" id="game-question">Loading...</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="game-options">
+                        <!-- Options injected by JS ensuring responsive text wrap -->
+                    </div>
+
+                    <div id="game-feedback" class="mt-6 font-extrabold text-xl min-h-[40px] transition-opacity opacity-0 break-words"></div>
+                    
+                    <button id="next-btn" onclick="nextQuestion()" class="mt-6 bg-slate-800 text-white px-8 py-3 rounded-xl font-bold hover:bg-slate-700 hidden mx-auto transition-all text-lg shadow-md hover:shadow-lg">
+                        Next Question ➔
+                    </button>
+                </div>
+                
+                <div id="game-end" class="text-center hidden py-10">
+                    <div class="text-7xl mb-6 animate-bounce">🏆</div>
+                    <h3 class="text-4xl font-extrabold text-slate-800 mb-4">Fantastic Job!</h3>
+                    <p class="text-xl text-slate-600 mb-8">You've successfully completed the vocabulary review.</p>
+                    <button onclick="resetGame()" class="bg-teal-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-700 transition-colors text-lg shadow-lg hover:shadow-xl">
+                        Play Again 🔄
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-7" class="space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b-4 border-slate-200 pb-4 gap-4">
+                <h2 class="text-3xl font-extrabold text-slate-800 flex items-center gap-3">
+                    <span class="bg-slate-100 p-2 rounded-xl shadow-sm">🪞</span> 7. Self-Reflection
+                </h2>
+                <label class="flex items-center gap-3 cursor-pointer bg-white px-5 py-2.5 rounded-xl border-2 border-slate-200 hover:border-teal-500 hover:bg-teal-50 transition-all shadow-sm group">
+                    <div class="relative flex items-center justify-center">
+                        <input type="checkbox" class="section-check lucero-check opacity-0 absolute h-6 w-6 cursor-pointer" data-section="7">
+                        <div class="w-6 h-6 border-2 border-slate-300 rounded bg-white transition-colors flex items-center justify-center group-hover:border-teal-400">
+                            <svg class="w-4 h-4 text-white hidden pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                    </div>
+                    <span class="text-base font-bold text-slate-600 group-hover:text-teal-700">Mark Complete</span>
+                </label>
+            </div>
+            
+            <p class="text-xl text-slate-600 font-medium">Take a moment to reflect on your speaking practice today. Honesty helps you grow!</p>
+
+            <div class="bg-white border-2 border-slate-200 rounded-3xl p-8 shadow-sm">
+                <div class="space-y-6" id="reflection-container">
+                    <!-- Reflection items dynamically injected -->
+                </div>
+            </div>
+        </section>
         
-        <header class="header-section">
-            <div class="badge-container">
-                <span class="badge">Adults (18+)</span>
-                <span class="badge">Level: A2 - B2</span>
-                <span class="badge">60 Minutes</span>
-                <span class="badge">Zoom / Online</span>
+        <div class="text-center py-10 bg-teal-50 rounded-3xl border-2 border-teal-100">
+            <p class="text-2xl font-extrabold text-teal-900 mb-2">Great work today! 🚀</p>
+            <p class="text-lg text-teal-700 font-medium">Consistent practice builds fluency. Keep pushing yourself!</p>
+        </div>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-300 py-12 mt-auto border-t-8 border-teal-600">
+        <div class="max-w-5xl mx-auto px-6 text-center space-y-5">
+            <div class="flex justify-center mb-4">
+                <span class="bg-teal-600/20 p-4 rounded-3xl text-4xl shadow-inner border border-teal-500/30">🌍</span>
             </div>
-            <h1>🌐 Technology, AI & Social Media</h1>
-            
-            <div class="objectives">
-                <h3 style="color: white; margin-bottom: 15px;">🎯 Lesson Objectives:</h3>
-                <ul style="padding-left: 25px; line-height: 1.8; font-size: 1.1rem; font-weight: 600;">
-                    <li>Discuss the impact of technology and smartphones on daily life.</li>
-                    <li>Express opinions on social media usage, AI, and digital privacy.</li>
-                    <li>Role-play setting digital boundaries and navigating tech issues.</li>
-                </ul>
-            </div>
-        </header>
-
-        <section id="s1-warmup">
-            <h2>☕ 1. Warm-Up Conversation</h2>
-            <p>Let's kick off the discussion. Read the question, think of your answer, then click to see a sample response.</p>
-            
-            <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>📱 1. What is the first app you open when you wake up?</span>
-                </button>
-                <div class="accordion-content">
-                    <p><strong>Sample Answer:</strong> The first app I open is my email to check for urgent work messages, followed by Facebook.</p>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>⏱️ 2. How many hours a day do you spend looking at a screen?</span>
-                </button>
-                <div class="accordion-content">
-                    <p><strong>Sample Answer:</strong> Since my job requires a computer, I probably spend over 10 hours a day looking at screens.</p>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>💬 3. Do you prefer texting or calling someone?</span>
-                </button>
-                <div class="accordion-content">
-                    <p><strong>Sample Answer:</strong> I definitely prefer texting because it is faster and less intrusive than calling.</p>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>🤖 4. Have you ever used an AI tool like ChatGPT?</span>
-                </button>
-                <div class="accordion-content">
-                    <p><strong>Sample Answer:</strong> Yes, I use AI tools occasionally to help me brainstorm ideas or draft emails faster.</p>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>🌍 5. Could you survive a week without your smartphone?</span>
-                </button>
-                <div class="accordion-content">
-                    <p><strong>Sample Answer:</strong> Honestly, no. I rely on it for navigation, banking, and staying in touch with my family.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="s2-vocab">
-            <h2>📖 2. Key Vocabulary</h2>
-            <p>Click on a word card to reveal its definition and see it used in context.</p>
-
-            <div class="vocab-grid">
-                <div class="vocab-card" onclick="this.classList.toggle('show-content')">
-                    <div class="vocab-word">Addicted <span style="font-size: 1rem; color: var(--text-light); font-weight: 600;">(adj)</span></div>
-                    <div class="vocab-def">Unable to stop doing something as a habit.</div>
-                    <div class="vocab-example">"Many teenagers are completely addicted to scrolling through TikTok."</div>
-                </div>
-                <div class="vocab-card" onclick="this.classList.toggle('show-content')">
-                    <div class="vocab-word">Convenient <span style="font-size: 1rem; color: var(--text-light); font-weight: 600;">(adj)</span></div>
-                    <div class="vocab-def">Fitting in well with a person's needs, activities, or plans.</div>
-                    <div class="vocab-example">"Online shopping is very convenient because you don't have to leave the house."</div>
-                </div>
-                <div class="vocab-card" onclick="this.classList.toggle('show-content')">
-                    <div class="vocab-word">Algorithm <span style="font-size: 1rem; color: var(--text-light); font-weight: 600;">(noun)</span></div>
-                    <div class="vocab-def">A set of mathematical rules used by computers to calculate or solve problems.</div>
-                    <div class="vocab-example">"The YouTube algorithm knows exactly what kind of videos I like to watch."</div>
-                </div>
-                <div class="vocab-card" onclick="this.classList.toggle('show-content')">
-                    <div class="vocab-word">Privacy <span style="font-size: 1rem; color: var(--text-light); font-weight: 600;">(noun)</span></div>
-                    <div class="vocab-def">The state of being free from public attention or being observed.</div>
-                    <div class="vocab-example">"You should be careful about your digital privacy and not share passwords."</div>
-                </div>
-                <div class="vocab-card" onclick="this.classList.toggle('show-content')">
-                    <div class="vocab-word">Go viral <span style="font-size: 1rem; color: var(--text-light); font-weight: 600;">(verb phrase)</span></div>
-                    <div class="vocab-def">To quickly become extremely popular on the internet.</div>
-                    <div class="vocab-example">"His funny video with the cat went viral and got millions of views."</div>
-                </div>
-                <div class="vocab-card" onclick="this.classList.toggle('show-content')">
-                    <div class="vocab-word">Disconnect <span style="font-size: 1rem; color: var(--text-light); font-weight: 600;">(verb)</span></div>
-                    <div class="vocab-def">To detach or separate; to stop using technology temporarily.</div>
-                    <div class="vocab-example">"When I go camping in the mountains, I completely disconnect from the internet."</div>
-                </div>
-                <div class="vocab-card" onclick="this.classList.toggle('show-content')">
-                    <div class="vocab-word">Virtual <span style="font-size: 1rem; color: var(--text-light); font-weight: 600;">(adj)</span></div>
-                    <div class="vocab-def">Existing or occurring on computers or on the internet.</div>
-                    <div class="vocab-example">"During the pandemic, all our team meetings became virtual."</div>
-                </div>
-                <div class="vocab-card" onclick="this.classList.toggle('show-content')">
-                    <div class="vocab-word">Innovative <span style="font-size: 1rem; color: var(--text-light); font-weight: 600;">(adj)</span></div>
-                    <div class="vocab-def">Featuring new methods; advanced and original.</div>
-                    <div class="vocab-example">"Apple is known for creating highly innovative tech products."</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="s3-speaking">
-            <h2>🗣️ 3. Main Speaking Practice</h2>
-            <p>Answer the questions below. Utilize the buttons for brainstorming ideas or to view sample structures.</p>
-
-            <!-- Question 1 -->
-            <div class="question-card">
-                <div class="question-title"><span class="difficulty-badge diff-easy">Easy</span> 1. What are the most common ways you use your smartphone?</div>
-                <div class="helper-buttons">
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'ideas1')">💡 Ideas</button>
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'short1')">💬 Short Answer</button>
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'long1')">📝 Extended Answer</button>
-                </div>
-                <div id="ideas1" class="helper-content box-ideas">
-                    <strong>Idea Prompts:</strong><br>
-                    • Communication (texting, calling).<br>
-                    • Entertainment (music, videos, games).<br>
-                    • Utilities (maps, banking, taking photos).
-                </div>
-                <div id="short1" class="helper-content box-short">
-                    <strong>Short Answer:</strong><br>
-                    "I mainly use my phone for chatting with friends and listening to Spotify."
-                </div>
-                <div id="long1" class="helper-content box-extended">
-                    <strong>Extended Answer:</strong><br>
-                    "I use my smartphone for almost everything. Aside from basic communication like texting and calling, I use it heavily for navigation when driving, and for mobile banking. It is incredibly convenient."
-                </div>
-            </div>
-
-            <!-- Question 2 -->
-            <div class="question-card">
-                <div class="question-title"><span class="difficulty-badge diff-easy">Easy</span> 2. Which social media platforms do you use the most, and why?</div>
-                <div class="helper-buttons">
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'ideas2')">💡 Ideas</button>
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'short2')">💬 Short Answer</button>
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'long2')">📝 Extended Answer</button>
-                </div>
-                <div id="ideas2" class="helper-content box-ideas">
-                    <strong>Idea Prompts:</strong><br>
-                    • Facebook / Instagram for friends and photos.<br>
-                    • LinkedIn for professional networking.<br>
-                    • TikTok / YouTube for entertainment.
-                </div>
-                <div id="short2" class="helper-content box-short">
-                    <strong>Short Answer:</strong><br>
-                    "I use Instagram the most because I like looking at photos and short videos."
-                </div>
-                <div id="long2" class="helper-content box-extended">
-                    <strong>Extended Answer:</strong><br>
-                    "My favorite platform is probably YouTube because I can learn new skills from tutorials. I also use Facebook daily, mainly to keep in touch with older family members who live far away."
-                </div>
-            </div>
-
-            <!-- Question 3 -->
-            <div class="question-card">
-                <div class="question-title"><span class="difficulty-badge diff-easy">Easy</span> 3. How often do you upgrade or buy a new phone?</div>
-                <div class="helper-buttons">
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'ideas3')">💡 Ideas</button>
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'short3')">💬 Short Answer</button>
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'long3')">📝 Extended Answer</button>
-                </div>
-                <div id="ideas3" class="helper-content box-ideas">
-                    <strong>Idea Prompts:</strong><br>
-                    • Every year (to have the newest tech).<br>
-                    • Every 3-4 years (when the old one breaks).<br>
-                    • I don't care about new phones, they are too expensive.
-                </div>
-                <div id="short3" class="helper-content box-short">
-                    <strong>Short Answer:</strong><br>
-                    "I usually buy a new phone every three years when my battery gets weak."
-                </div>
-                <div id="long3" class="helper-content box-extended">
-                    <strong>Extended Answer:</strong><br>
-                    "I am not someone who needs the latest gadget. I usually wait until my current phone completely breaks down or becomes too slow to use, which is usually around three to four years."
-                </div>
-            </div>
-
-            <!-- Question 4 -->
-            <div class="question-card">
-                <div class="question-title"><span class="difficulty-badge diff-med">Medium</span> 4. What are some negative effects of spending too much time on social media?</div>
-                <div class="helper-buttons">
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'ideas4')">💡 Ideas</button>
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'short4')">💬 Short Answer</button>
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'long4')">📝 Extended Answer</button>
-                </div>
-                <div id="ideas4" class="helper-content box-ideas">
-                    <strong>Idea Prompts:</strong><br>
-                    • Wasting time / Procrastination.<br>
-                    • Comparing your life to others (feeling jealous or sad).<br>
-                    • Eye strain and lack of physical exercise.
-                </div>
-                <div id="short4" class="helper-content box-short">
-                    <strong>Short Answer:</strong><br>
-                    "It makes people waste a lot of time and sometimes feel bad about their own lives."
-                </div>
-                <div id="long4" class="helper-content box-extended">
-                    <strong>Extended Answer:</strong><br>
-                    "One major negative effect is that people become addicted and waste hours scrolling. Furthermore, social media often shows a 'perfect' fake life, which causes people to constantly compare themselves and feel insecure."
-                </div>
-            </div>
-
-            <!-- Question 5 -->
-            <div class="question-card">
-                <div class="question-title"><span class="difficulty-badge diff-med">Medium</span> 5. How has technology changed the way we work in the last 10 years?</div>
-                <div class="helper-buttons">
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'ideas5')">💡 Ideas</button>
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'short5')">💬 Short Answer</button>
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'long5')">📝 Extended Answer</button>
-                </div>
-                <div id="ideas5" class="helper-content box-ideas">
-                    <strong>Idea Prompts:</strong><br>
-                    • Remote work / Zoom meetings.<br>
-                    • Cloud storage and sharing documents instantly.<br>
-                    • The boundary between work and home is disappearing.
-                </div>
-                <div id="short5" class="helper-content box-short">
-                    <strong>Short Answer:</strong><br>
-                    "It has allowed many people to work from home using virtual meetings."
-                </div>
-                <div id="long5" class="helper-content box-extended">
-                    <strong>Extended Answer:</strong><br>
-                    "Technology has completely revolutionized the workplace. The biggest change is the ability to work remotely. Tools like Zoom and Google Workspace allow teams to collaborate instantly from different countries, which wasn't possible before."
-                </div>
-            </div>
-
-            <!-- Question 8 -->
-            <div class="question-card">
-                <div class="question-title"><span class="difficulty-badge diff-hard">Opinion</span> 8. Do you think AI (Artificial Intelligence) is a threat to human jobs?</div>
-                <div class="helper-buttons">
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'ideas8')">💡 Ideas</button>
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'short8')">💬 Short Answer</button>
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'long8')">📝 Extended Answer</button>
-                </div>
-                <div id="ideas8" class="helper-content box-ideas">
-                    <strong>Idea Prompts:</strong><br>
-                    • Yes: AI can do repetitive tasks faster and cheaper than humans.<br>
-                    • No: AI will create new types of jobs and just be a helpful tool.<br>
-                    • It depends on the industry (e.g., tech vs. physical labor).
-                </div>
-                <div id="short8" class="helper-content box-short">
-                    <strong>Short Answer:</strong><br>
-                    "Yes, I think AI will replace many basic office jobs in the future."
-                </div>
-                <div id="long8" class="helper-content box-extended">
-                    <strong>Extended Answer:</strong><br>
-                    "I believe AI is a double-edged sword. It will definitely eliminate certain repetitive jobs, like basic data entry or customer service. However, it will also create new opportunities. We need to adapt and learn how to use AI as a tool rather than fear it."
-                </div>
-            </div>
-
-            <!-- Question 9 -->
-            <div class="question-card">
-                <div class="question-title"><span class="difficulty-badge diff-hard">Opinion</span> 9. "Social media makes people more lonely." Do you agree or disagree?</div>
-                <div class="helper-buttons">
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'ideas9')">💡 Ideas</button>
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'short9')">💬 Short Answer</button>
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'long9')">📝 Extended Answer</button>
-                </div>
-                <div id="ideas9" class="helper-content box-ideas">
-                    <strong>Idea Prompts:</strong><br>
-                    • Agree: People talk to screens instead of real people face-to-face.<br>
-                    • Disagree: It helps us connect with friends who live far away.<br>
-                    • Virtual friends are not the same as real-life friends.
-                </div>
-                <div id="short9" class="helper-content box-short">
-                    <strong>Short Answer:</strong><br>
-                    "I agree. People spend too much time looking at phones instead of talking."
-                </div>
-                <div id="long9" class="helper-content box-extended">
-                    <strong>Extended Answer:</strong><br>
-                    "I strongly agree with this statement. Even though we have hundreds of 'friends' online, those connections are often superficial. People spend less time meeting face-to-face, which leads to a deep sense of isolation and loneliness in the real world."
-                </div>
-            </div>
-
-            <!-- Question 10 -->
-            <div class="question-card">
-                <div class="question-title"><span class="difficulty-badge diff-hard">Opinion</span> 10. Should the government regulate or restrict how tech companies use our private data?</div>
-                <div class="helper-buttons">
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'ideas10')">💡 Ideas</button>
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'short10')">💬 Short Answer</button>
-                    <button class="btn btn-outline" onclick="toggleHelper(this, 'long10')">📝 Extended Answer</button>
-                </div>
-                <div id="ideas10" class="helper-content box-ideas">
-                    <strong>Idea Prompts:</strong><br>
-                    • Yes, companies sell our data without our permission.<br>
-                    • Yes, to protect individuals from hackers and scams.<br>
-                    • No, targeted ads are actually useful and free platforms need to make money.
-                </div>
-                <div id="short10" class="helper-content box-short">
-                    <strong>Short Answer:</strong><br>
-                    "Yes, they should. Our privacy is very important and companies shouldn't sell it."
-                </div>
-                <div id="long10" class="helper-content box-extended">
-                    <strong>Extended Answer:</strong><br>
-                    "Absolutely. Currently, large tech companies have too much power and collect massive amounts of personal data without clear transparency. Governments must implement strict laws to protect user privacy and prevent data from being exploited for profit."
-                </div>
-            </div>
-        </section>
-
-        <section id="s6-roleplay">
-            <h2>🎭 4. Professional Role-Play</h2>
-            <p>Work with a partner. Choose a scenario and practice your conversation skills. Expand the dialogue hints if you get stuck.</p>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <!-- Scenario A -->
-                <div class="question-card" style="margin-bottom: 0;">
-                    <h3 style="color: var(--primary);">Scenario A: The "Digital Detox"</h3>
-                    <p><strong>Situation:</strong> Student A is addicted to their smartphone and social media. Student B is a concerned friend suggesting a weekend trip with no screens.</p>
-                    <p><strong>Role A:</strong> Make excuses. Say you need your phone for "emergencies" and to check emails.</p>
-                    <p><strong>Role B:</strong> Persuade them. Explain the benefits of disconnecting and enjoying nature.</p>
-                    
-                    <button class="btn btn-secondary" onclick="toggleAccordion(this.nextElementSibling)" style="width: 100%; margin-top: 15px; justify-content: center;">Show Dialogue Hints ▼</button>
-                    <div style="display: none; padding: 15px; background: var(--bg); margin-top: 10px; border-radius: 8px; font-size: 1rem;">
-                        <em>B: "Hey, you've been staring at your screen all day. We should go camping this weekend and leave our phones at home. A digital detox!"</em><br><br>
-                        <em>A: "Leave my phone? I can't do that. What if there is an emergency?"</em><br><br>
-                        <em>B: "We will have one emergency phone in the car. It will be so relaxing to disconnect from the internet."</em><br><br>
-                        <em>A: "But I need to check my work emails on Saturday morning..."</em>
-                    </div>
-                </div>
-
-                <!-- Scenario B -->
-                <div class="question-card" style="margin-bottom: 0;">
-                    <h3 style="color: var(--secondary);">Scenario B: Tech Support</h3>
-                    <p><strong>Situation:</strong> Student A is an older relative who is very confused about a new app (like Zoom or Mobile Banking). Student B is helping them.</p>
-                    <p><strong>Role A:</strong> Express frustration. Say the buttons are too confusing and you are afraid of breaking it.</p>
-                    <p><strong>Role B:</strong> Be patient. Explain step-by-step how to use it in very simple terms.</p>
-                    
-                    <button class="btn btn-secondary" onclick="toggleAccordion(this.nextElementSibling)" style="width: 100%; margin-top: 15px; justify-content: center;">Show Dialogue Hints ▼</button>
-                    <div style="display: none; padding: 15px; background: var(--bg); margin-top: 10px; border-radius: 8px; font-size: 1rem;">
-                        <em>A: "I don't understand this banking app. There are too many buttons. I am afraid I will lose my money!"</em><br><br>
-                        <em>B: "Don't worry, it is very secure. Let's do it together. First, just tap the blue icon on your screen."</em><br><br>
-                        <em>A: "Okay, I tapped it. Now it asks for a password?"</em><br><br>
-                        <em>B: "Yes. Just type the password we created yesterday, then press the 'Log In' button."</em>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="s7-fluency">
-            <h2>🚀 5. Fluency Builder</h2>
-            <p>Use these advanced sentence starters to structure your arguments clearly. Click a card to flip it and see how it finishes.</p>
-
-            <div class="flashcard-container">
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">From my perspective, technology has...</div>
-                        <div class="flashcard-back">... made our lives significantly more convenient.</div>
-                    </div>
-                </div>
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">One major advantage of AI is...</div>
-                        <div class="flashcard-back">... its ability to process data much faster than humans.</div>
-                    </div>
-                </div>
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">On the downside, social media often...</div>
-                        <div class="flashcard-back">... leads to a decrease in face-to-face interactions.</div>
-                    </div>
-                </div>
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">I couldn't live without my smartphone because...</div>
-                        <div class="flashcard-back">... I rely on it entirely for navigation and communication.</div>
-                    </div>
-                </div>
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">It is widely believed that...</div>
-                        <div class="flashcard-back">... excessive screen time is bad for our mental health.</div>
-                    </div>
-                </div>
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">I strongly disagree with the idea that...</div>
-                        <div class="flashcard-back">... virtual relationships are as valuable as real ones.</div>
-                    </div>
-                </div>
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">When it comes to digital privacy, ...</div>
-                        <div class="flashcard-back">... we must be very careful about what we share online.</div>
-                    </div>
-                </div>
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">If I had to disconnect for a week, I would...</div>
-                        <div class="flashcard-back">... probably read more books and spend time outdoors.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="s8-game">
-            <h2>🧠 6. Review Game: Match the Concepts</h2>
-            <p>Click a vocabulary word on the left, then find its matching definition on the right.</p>
-
-            <div class="game-board" id="match-game">
-                <div class="game-col" id="col-words">
-                    <!-- Populated by JS -->
-                </div>
-                <div class="game-col" id="col-defs">
-                    <!-- Populated by JS -->
-                </div>
-            </div>
-            
-            <div id="game-message" class="message-box">
-                🏆 Outstanding! You successfully matched all the tech vocabulary!
-            </div>
-            
-            <div style="text-align: center; margin-top: 30px;">
-                <button class="btn" onclick="initGame()">🔄 Restart Game</button>
-            </div>
-        </section>
-
-        <section id="s9-reflection">
-            <h2>🎯 7. Self-Reflection</h2>
-            <p>Take a moment to evaluate your speaking performance today. Check the boxes that apply:</p>
-            
-            <div>
-                <label class="reflection-item">
-                    <input type="checkbox">
-                    <span>I actively used adult tech vocabulary (e.g., algorithm, privacy, convenient).</span>
-                </label>
-                <label class="reflection-item">
-                    <input type="checkbox">
-                    <span>I structured my opinions clearly using phrases like "From my perspective...".</span>
-                </label>
-                <label class="reflection-item">
-                    <input type="checkbox">
-                    <span>I defended my viewpoint logically in the "Opinion" questions.</span>
-                </label>
-                <label class="reflection-item">
-                    <input type="checkbox">
-                    <span>I participated confidently and naturally in the role-play scenario.</span>
-                </label>
-                <label class="reflection-item">
-                    <input type="checkbox">
-                    <span>I feel more comfortable discussing modern technology in English.</span>
-                </label>
-            </div>
-        </section>
-
-        <footer>
-            <div class="footer-brand">Hệ thống Anh Ngữ Lucero | Lucero English System</div>
-            <div>Tác giả biên soạn: Mr. Lucero. All rights reserved &copy; 2026.</div>
-        </footer>
-
-    </div>
+            <h2 class="text-3xl font-extrabold text-white tracking-wide">Lucero English System</h2>
+            <div class="h-px w-24 bg-teal-500 mx-auto my-4 opacity-50"></div>
+            <p class="text-xl font-medium text-slate-200">Bản quyền thuộc về <strong>Hệ thống Anh Ngữ Lucero</strong></p>
+            <p class="text-lg text-teal-400 font-medium">Curriculum & Interactive Design by <strong>Mr. Lucero</strong></p>
+            <p class="text-sm text-slate-500 pt-6 font-medium tracking-wide uppercase">© 2026 Lucero English System. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
-        // Toggle Accordion functionality
-        function toggleAccordion(element) {
-            let targetContent = element.nextElementSibling;
-            if(!targetContent) {
-                 if(element.style.display === "none") {
-                     element.style.display = "block";
-                 } else {
-                     element.style.display = "none";
-                 }
-                 return;
-            }
-            let parent = element.parentElement;
-            parent.classList.toggle("active");
-        }
-
-        // Toggle speaking helper content
-        function toggleHelper(btn, contentId) {
-            let content = document.getElementById(contentId);
-            let isActive = content.classList.contains('active');
+        // --- DATA: Main Speaking Questions ---
+        const speakingData = [
+            { level: "Easy", icon: "🟢", q: "Describe a memorable trip you took in the past. Where did you go?",
+              ideas: ["Destination and weather", "Who you traveled with", "Main activities", "Food you ate"],
+              short: "Last year, I went to Kyoto, Japan. It was amazing because I got to see the beautiful temples and eat authentic sushi.",
+              extended: "One of the most memorable trips I've ever taken was to Kyoto last spring. I traveled with my best friend, and the weather was perfectly cool. We spent our days walking through historic temples and trying street food. The highlight was definitely experiencing the cherry blossoms in full bloom." },
             
-            let allHelpers = btn.parentElement.parentElement.querySelectorAll('.helper-content');
-            allHelpers.forEach(h => h.classList.remove('active'));
+            { level: "Easy", icon: "🟢", q: "What is your favorite mode of transportation when traveling, and why?",
+              ideas: ["Airplanes (fast)", "Trains (scenic, relaxing)", "Driving (freedom)", "Boats (unique)"],
+              short: "I prefer taking the train because it is very relaxing and you can look at the beautiful scenery.",
+              extended: "My absolute favorite way to travel is by train, especially in Europe. Unlike airplanes, you don't have to deal with stressful security checks or long wait times at the airport. You have plenty of legroom, you can walk around, and the scenery passing by the window is often breathtaking." },
 
-            if(!isActive) {
-                content.classList.add('active');
-            }
-        }
+            { level: "Easy", icon: "🟢", q: "What are three essential items you always pack in your suitcase?",
+              ideas: ["Comfortable walking shoes", "Universal power adapter", "Basic medicine", "A good book"],
+              short: "I always pack comfortable shoes, my phone charger, and a light jacket.",
+              extended: "I always make sure to pack a universal power adapter because I carry a lot of electronics. Secondly, a pair of extremely comfortable walking shoes is essential because I love exploring cities on foot. Finally, I always bring a small medical kit with painkillers and band-aids, just in case." },
 
-        // Update progress bar
-        function updateProgress() {
-            let checkboxes = document.querySelectorAll('.progress-item input[type="checkbox"]');
-            checkboxes.forEach(chk => {
-                if(chk.checked) {
-                    chk.parentElement.classList.add('completed');
-                } else {
-                    chk.parentElement.classList.remove('completed');
-                }
-            });
-        }
+            { level: "Medium", icon: "🟡", q: "Have you ever experienced 'culture shock'? How did you handle it?",
+              ideas: ["Language barriers", "Different food or customs", "Feeling confused", "Learning to adapt"],
+              short: "Yes, when I visited India, the traffic and noise gave me culture shock, but I eventually got used to it.",
+              extended: "I definitely experienced severe culture shock when I moved to South Korea for six months. The language barrier was tough, and the social etiquette regarding age and respect was completely different from my home country. I handled it by observing locals carefully, asking polite questions, and being patient with my own mistakes." },
 
-        // Review Game Logic
-        const gameData = [
-            { word: "Addicted", def: "Unable to stop doing something as a habit." },
-            { word: "Algorithm", def: "Mathematical rules used by computers to calculate." },
-            { word: "Convenient", def: "Fitting in well with your needs or plans." },
-            { word: "Privacy", def: "The state of being free from public attention." },
-            { word: "Go viral", def: "To quickly become extremely popular on the internet." },
-            { word: "Disconnect", def: "To stop using technology temporarily." }
+            { level: "Medium", icon: "🟡", q: "Do you prefer strictly following an itinerary, or exploring spontaneously?",
+              ideas: ["Itinerary: Organized, see everything", "Spontaneous: Less stress, surprises", "A mix of both"],
+              short: "I prefer a mix of both. I like to plan my hotel and flights, but leave my days free for spontaneous exploring.",
+              extended: "I usually prefer to have a loose itinerary. I think it's important to book your accommodation and main transport in advance to avoid stress. However, if you plan every single hour of your day, it feels like a military operation rather than a holiday. I like to leave room to get lost and discover places off the beaten path." },
+
+            { level: "Medium", icon: "🟡", q: "How does traveling and experiencing new cultures change a person's perspective?",
+              ideas: ["Breaks stereotypes", "Increases empathy", "Makes you appreciate home", "Broadens your mind"],
+              short: "Traveling opens your mind and helps you realize that people all over the world are very similar.",
+              extended: "I believe traveling fundamentally changes your worldview. It forces you out of your comfort zone and breaks down stereotypes you might hold about other nationalities. When you immerse yourself in a foreign culture, you develop empathy and realize that despite superficial differences, human beings essentially share the same core values." },
+
+            { level: "Medium", icon: "🟡", q: "What is 'ecotourism', and why is it becoming so popular today?",
+              ideas: ["Protecting nature", "Supporting local communities", "Reducing carbon footprint", "Connecting with wildlife"],
+              short: "Ecotourism is traveling responsibly to natural areas. It's popular because people want to protect the environment.",
+              extended: "Ecotourism involves traveling to natural, undisturbed areas with the specific goal of conserving the environment and improving the well-being of the local people. It's becoming incredibly popular because modern tourists are much more aware of climate change and want to minimize their carbon footprint while supporting ethical businesses." },
+
+            { level: "Opinion", icon: "🔴", q: "Is 'overtourism' ruining famous historical cities? What should be done?",
+              ideas: ["Crowds ruin the experience", "Locals are pushed out", "Limit tourist numbers", "Tourist taxes"],
+              short: "Yes, cities like Venice are too crowded. I think governments should limit the number of tourists allowed per day.",
+              extended: "In my opinion, overtourism is a massive problem. In cities like Barcelona or Kyoto, the sheer volume of visitors makes it difficult for local residents to live normal lives, and housing prices skyrocket due to short-term rentals. I strongly believe governments need to implement stricter tourist taxes and cap the number of daily visitors to preserve these historic sites." },
+
+            { level: "Opinion", icon: "🔴", q: "Has social media (like Instagram/TikTok) ruined the authenticity of travel?",
+              ideas: ["People travel just for photos", "Hidden gems become overcrowded", "Creates unrealistic expectations"],
+              short: "Yes, I think many people now travel just to take photos for Instagram instead of enjoying the culture.",
+              extended: "I largely agree that social media has negatively impacted authentic travel. Nowadays, many people choose their destinations based purely on how 'Instagrammable' they are. Furthermore, when an influencer posts about a quiet, beautiful spot off the beaten path, it often turns into an overcrowded tourist trap within a matter of months." },
+
+            { level: "Opinion", icon: "🔴", q: "Do you believe everyone should travel alone at least once in their life? Why?",
+              ideas: ["Builds independence", "Forces you to make decisions", "Can be lonely but rewarding", "Self-discovery"],
+              short: "Yes, solo travel teaches you how to be independent and forces you to solve problems on your own.",
+              extended: "I absolutely believe that solo travel is a necessary life experience. When you travel alone, you have zero safety net. It forces you to navigate public transport, solve problems, and make all the decisions by yourself. While it can occasionally be lonely, it builds tremendous self-confidence and independence that you carry into your daily life." }
         ];
 
-        let selectedWordBtn = null;
-        let selectedDefBtn = null;
-        let matchesFound = 0;
-
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-
-        function initGame() {
-            const colWords = document.getElementById('col-words');
-            const colDefs = document.getElementById('col-defs');
-            const msgBox = document.getElementById('game-message');
-            
-            colWords.innerHTML = '';
-            colDefs.innerHTML = '';
-            msgBox.style.display = 'none';
-            matchesFound = 0;
-            selectedWordBtn = null;
-            selectedDefBtn = null;
-
-            let words = [...gameData];
-            let defs = [...gameData];
-            
-            shuffleArray(words);
-            shuffleArray(defs);
-
-            words.forEach((item) => {
-                let btn = document.createElement('button');
-                btn.className = 'game-btn';
-                btn.innerText = item.word;
-                btn.onclick = () => handleWordClick(btn, item.word);
-                colWords.appendChild(btn);
-            });
-
-            defs.forEach((item) => {
-                let btn = document.createElement('button');
-                btn.className = 'game-btn';
-                btn.innerText = item.def;
-                btn.onclick = () => handleDefClick(btn, item.word); 
-                colDefs.appendChild(btn);
-            });
-        }
-
-        function handleWordClick(btn, wordText) {
-            if(btn.classList.contains('correct')) return;
-            document.querySelectorAll('#col-words .game-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            selectedWordBtn = { btn: btn, val: wordText };
-            checkMatch();
-        }
-
-        function handleDefClick(btn, matchedWord) {
-            if(btn.classList.contains('correct')) return;
-            document.querySelectorAll('#col-defs .game-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            selectedDefBtn = { btn: btn, val: matchedWord };
-            checkMatch();
-        }
-
-        function checkMatch() {
-            if (selectedWordBtn && selectedDefBtn) {
-                if (selectedWordBtn.val === selectedDefBtn.val) {
-                    // Correct Match
-                    selectedWordBtn.btn.classList.remove('selected');
-                    selectedDefBtn.btn.classList.remove('selected');
-                    selectedWordBtn.btn.classList.add('correct');
-                    selectedDefBtn.btn.classList.add('correct');
+        // --- RENDER MAIN QUESTIONS ---
+        const container = document.getElementById('speaking-questions');
+        speakingData.forEach((item, index) => {
+            const html = `
+                <div class="bg-white border-2 border-slate-200 rounded-3xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                    <div class="p-6 md:p-8 border-b-2 border-slate-100 bg-slate-50/50">
+                        <div class="flex flex-wrap items-center gap-3 mb-4">
+                            <span class="text-sm font-extrabold uppercase tracking-widest text-slate-600 bg-white border border-slate-200 px-3 py-1.5 rounded-lg shadow-sm">${item.icon} ${item.level}</span>
+                            <span class="text-sm font-bold text-slate-400 bg-slate-100 px-3 py-1.5 rounded-lg">Question ${index + 1} of 10</span>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-slate-800 leading-snug break-words">${item.q}</h3>
+                    </div>
                     
-                    matchesFound++;
-                    if(matchesFound === gameData.length) {
-                        setTimeout(() => {
-                            document.getElementById('game-message').style.display = 'block';
-                        }, 300);
-                    }
+                    <div class="p-5 bg-white flex flex-col sm:flex-row flex-wrap gap-3">
+                        <button onclick="toggleTab('idea-${index}')" class="flex-1 sm:flex-none justify-center px-5 py-3 rounded-xl font-bold text-base transition-all bg-amber-50 text-amber-700 hover:bg-amber-100 border-2 border-amber-200 shadow-sm flex items-center gap-2 hover:shadow">
+                            <span class="text-xl">💡</span> Idea Bank
+                        </button>
+                        <button onclick="toggleTab('short-${index}')" class="flex-1 sm:flex-none justify-center px-5 py-3 rounded-xl font-bold text-base transition-all bg-teal-50 text-teal-700 hover:bg-teal-100 border-2 border-teal-200 shadow-sm flex items-center gap-2 hover:shadow">
+                            <span class="text-xl">📝</span> Short Answer
+                        </button>
+                        <button onclick="toggleTab('long-${index}')" class="flex-1 sm:flex-none justify-center px-5 py-3 rounded-xl font-bold text-base transition-all bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border-2 border-indigo-200 shadow-sm flex items-center gap-2 hover:shadow">
+                            <span class="text-xl">🗣️</span> Extended Answer
+                        </button>
+                    </div>
+
+                    <!-- Expandable Content Areas -->
+                    <div id="idea-${index}" class="expand-content bg-amber-50/80">
+                        <div class="p-6 md:p-8 border-t border-amber-100">
+                            <h4 class="font-extrabold text-amber-900 mb-3 text-base uppercase tracking-wider">Ideas to talk about:</h4>
+                            <ul class="list-disc list-inside text-amber-900 space-y-2 text-lg font-medium ml-2">
+                                ${item.ideas.map(idea => `<li>${idea}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div id="short-${index}" class="expand-content bg-teal-50/80">
+                        <div class="p-6 md:p-8 border-t border-teal-100">
+                            <h4 class="font-extrabold text-teal-900 mb-3 text-base uppercase tracking-wider">B1 Level Answer:</h4>
+                            <p class="text-teal-900 text-xl italic border-l-4 border-teal-400 pl-4 py-2 bg-white rounded-r-xl shadow-sm leading-relaxed">"${item.short}"</p>
+                        </div>
+                    </div>
+
+                    <div id="long-${index}" class="expand-content bg-indigo-50/80">
+                        <div class="p-6 md:p-8 border-t border-indigo-100">
+                            <h4 class="font-extrabold text-indigo-900 mb-3 text-base uppercase tracking-wider">B2/C1 Level Answer:</h4>
+                            <p class="text-indigo-900 text-xl italic border-l-4 border-indigo-400 pl-4 py-3 bg-white rounded-r-xl shadow-sm leading-relaxed">"${item.extended}"</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.innerHTML += html;
+        });
+
+        // --- RENDER FLUENCY FLASHCARDS ---
+        const starters = [
+            { front: "Speaking from experience...", back: "...I always pack a sweater for the plane." },
+            { front: "One of the highlights was...", back: "...visiting the local night market." },
+            { front: "It's a common belief that...", back: "...traveling makes you more open-minded." },
+            { front: "To put it simply...", back: "...I prefer nature over big, crowded cities." },
+            { front: "Looking back on it...", back: "...getting lost was the best part of the trip." },
+            { front: "I strongly believe that...", back: "...we need to protect historical landmarks." },
+            { front: "Another key point is...", back: "...learning a few phrases in the local language." },
+            { front: "Compared to...", back: "...traveling by bus, the train is much more scenic." },
+            { front: "In the long run...", back: "...ecotourism benefits the local economy." },
+            { front: "If I had to choose...", back: "...I would go to the mountains instead of the beach." }
+        ];
+
+        const fluencyContainer = document.getElementById('fluency-cards');
+        starters.forEach((item) => {
+            fluencyContainer.innerHTML += `
+                <div class="min-h-[14rem] h-full flashcard group" onclick="this.classList.toggle('flipped')">
+                    <div class="flashcard-inner w-full h-full">
+                        <div class="flashcard-front bg-white border-2 border-slate-200 group-hover:border-teal-400 transition-colors flex flex-col justify-center p-6 text-center">
+                            <span class="text-4xl mb-4">💬</span>
+                            <span class="font-extrabold text-slate-800 text-xl break-words leading-snug text-balance">${item.front}</span>
+                        </div>
+                        <div class="flashcard-back bg-gradient-to-br from-teal-50 to-emerald-100 border-2 border-teal-300 flex flex-col justify-center p-6 text-center">
+                            <span class="font-bold text-xl text-teal-900 leading-relaxed break-words text-balance"><i>${item.back}</i></span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        // --- RENDER REFLECTION QUESTIONS ---
+        const reflections = [
+            "Did I actively try to use the new B2 travel vocabulary?",
+            "Did I describe my past trips using detailed sentences?",
+            "Did I provide extended answers (3+ sentences) instead of just short replies?",
+            "Did I use the fluency sentence starters to connect my ideas smoothly?",
+            "Was I able to clearly express and defend my opinion on modern travel trends?"
+        ];
+
+        const reflectionContainer = document.getElementById('reflection-container');
+        reflections.forEach((q, i) => {
+            reflectionContainer.innerHTML += `
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 p-4 hover:bg-slate-50 rounded-2xl transition-colors border-b-2 border-slate-100 last:border-0">
+                    <span class="text-slate-800 font-bold text-lg leading-relaxed break-words flex-1">${i+1}. ${q}</span>
+                    <div class="flex flex-wrap gap-3 shrink-0">
+                        <label class="cursor-pointer bg-slate-100 hover:bg-green-100 has-[:checked]:bg-green-500 has-[:checked]:text-white px-5 py-2.5 rounded-xl text-base font-bold transition-all border border-slate-200 has-[:checked]:border-green-600 shadow-sm">
+                            <input type="radio" name="ref${i}" class="hidden"> Yes
+                        </label>
+                        <label class="cursor-pointer bg-slate-100 hover:bg-amber-100 has-[:checked]:bg-amber-500 has-[:checked]:text-white px-5 py-2.5 rounded-xl text-base font-bold transition-all border border-slate-200 has-[:checked]:border-amber-600 shadow-sm">
+                            <input type="radio" name="ref${i}" class="hidden"> Somewhat
+                        </label>
+                        <label class="cursor-pointer bg-slate-100 hover:bg-slate-200 has-[:checked]:bg-slate-600 has-[:checked]:text-white px-5 py-2.5 rounded-xl text-base font-bold transition-all border border-slate-200 has-[:checked]:border-slate-700 shadow-sm">
+                            <input type="radio" name="ref${i}" class="hidden"> Not yet
+                        </label>
+                    </div>
+                </div>
+            `;
+        });
+
+        // --- INTERACTION LOGIC ---
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if(el.classList.contains('open')) {
+                el.classList.remove('open');
+            } else {
+                el.classList.add('open');
+            }
+        }
+
+        function toggleTab(id) {
+            const index = id.split('-')[1];
+            const types = ['idea', 'short', 'long'];
+            
+            types.forEach(type => {
+                const targetId = `${type}-${index}`;
+                const el = document.getElementById(targetId);
+                if (targetId === id) {
+                    el.classList.toggle('open');
                 } else {
-                    // Incorrect Match
-                    selectedWordBtn.btn.classList.add('incorrect');
-                    selectedDefBtn.btn.classList.add('incorrect');
-                    
-                    let wBtn = selectedWordBtn.btn;
-                    let dBtn = selectedDefBtn.btn;
-                    
-                    setTimeout(() => {
-                        wBtn.classList.remove('selected', 'incorrect');
-                        dBtn.classList.remove('selected', 'incorrect');
-                    }, 500);
+                    el.classList.remove('open');
                 }
-                selectedWordBtn = null;
-                selectedDefBtn = null;
+            });
+        }
+
+        // --- STREAMING_CHUNK:Review Game Logic... ---
+        const gameData = [
+            { word: "Itinerary", def: "A detailed plan or schedule of a journey, including the route and places to visit.", options: ["Itinerary", "Tourist trap", "Ecotourism"] },
+            { word: "Tourist trap", def: "A place that attracts many visitors and charges unusually high prices.", options: ["Culture shock", "Tourist trap", "Jet lag"] },
+            { word: "Off the beaten path", def: "A phrase meaning to go to a place that is not well known or popular.", options: ["Immerse", "Breathtaking", "Off the beaten path"] },
+            { word: "Ecotourism", def: "Tourism directed toward natural environments, intended to support conservation.", options: ["Ecotourism", "Itinerary", "Culture shock"] },
+            { word: "Jet lag", def: "Extreme tiredness felt after a long flight across different time zones.", options: ["Immerse", "Jet lag", "Tourist trap"] }
+        ];
+
+        let currentQ = 0;
+
+        function loadQuestion() {
+            const q = gameData[currentQ];
+            document.getElementById('game-progress').innerText = `Question ${currentQ + 1} of ${gameData.length}`;
+            document.getElementById('game-question').innerText = `"${q.def}"`;
+            
+            const optionsContainer = document.getElementById('game-options');
+            optionsContainer.innerHTML = '';
+            
+            const shuffledOptions = [...q.options].sort(() => Math.random() - 0.5);
+
+            shuffledOptions.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'w-full h-auto min-h-[4rem] py-3 px-4 bg-white hover:bg-teal-50 border-2 border-slate-200 rounded-xl font-bold text-slate-700 text-lg md:text-xl transition-all game-btn break-words shadow-sm hover:shadow-md hover:border-teal-300';
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(btn, opt, q.word);
+                optionsContainer.appendChild(btn);
+            });
+
+            document.getElementById('game-feedback').style.opacity = '0';
+            document.getElementById('next-btn').classList.add('hidden');
+        }
+
+        function checkAnswer(btn, selected, correct) {
+            document.querySelectorAll('.game-btn').forEach(b => {
+                b.disabled = true;
+                b.classList.remove('hover:bg-teal-50', 'hover:border-teal-300', 'hover:shadow-md', 'cursor-pointer');
+                b.classList.add('opacity-70');
+            });
+
+            const feedback = document.getElementById('game-feedback');
+            feedback.style.opacity = '1';
+            btn.classList.remove('opacity-70');
+
+            if (selected === correct) {
+                btn.classList.replace('bg-white', 'bg-green-100');
+                btn.classList.replace('border-slate-200', 'border-green-500');
+                btn.classList.replace('text-slate-700', 'text-green-900');
+                feedback.innerHTML = '✅ Absolutely Correct!';
+                feedback.className = 'mt-6 font-extrabold text-2xl min-h-[40px] transition-opacity opacity-100 text-green-600';
+            } else {
+                btn.classList.replace('bg-white', 'bg-red-100');
+                btn.classList.replace('border-slate-200', 'border-red-500');
+                btn.classList.replace('text-slate-700', 'text-red-900');
+                
+                document.querySelectorAll('.game-btn').forEach(b => {
+                    if(b.innerText === correct) {
+                        b.classList.remove('opacity-70');
+                        b.classList.replace('bg-white', 'bg-green-100');
+                        b.classList.replace('border-slate-200', 'border-green-500');
+                        b.classList.replace('text-slate-700', 'text-green-900');
+                    }
+                });
+
+                feedback.innerHTML = `❌ Incorrect. The correct answer is <strong class="underline">${correct}</strong>.`;
+                feedback.className = 'mt-6 font-extrabold text-2xl min-h-[40px] transition-opacity opacity-100 text-red-600';
+            }
+
+            if (currentQ < gameData.length - 1) {
+                document.getElementById('next-btn').classList.remove('hidden');
+            } else {
+                setTimeout(() => {
+                    document.getElementById('game-container').classList.add('hidden');
+                    document.getElementById('game-end').classList.remove('hidden');
+                }, 2000);
             }
         }
 
-        // Initialize game on window load
-        window.onload = initGame;
+        function nextQuestion() {
+            currentQ++;
+            loadQuestion();
+        }
+
+        function resetGame() {
+            currentQ = 0;
+            document.getElementById('game-end').classList.add('hidden');
+            document.getElementById('game-container').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        // Initialize game
+        loadQuestion();
+
+        // --- STREAMING_CHUNK:Progress Tracker Logic... ---
+        const checkboxes = document.querySelectorAll('.section-check');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        
+        const totalSections = checkboxes.length;
+
+        checkboxes.forEach(box => {
+            box.addEventListener('change', updateProgress);
+        });
+
+        function updateProgress() {
+            const checkedCount = document.querySelectorAll('.section-check:checked').length;
+            const percentage = Math.round((checkedCount / totalSections) * 100);
+            
+            progressBar.style.width = percentage + '%';
+            
+            if (percentage === 100) {
+                progressText.innerHTML = '🎉 100% COMPLETED!';
+                progressText.classList.replace('text-teal-200', 'text-emerald-300');
+            } else {
+                progressText.innerHTML = `PROGRESS: ${percentage}%`;
+                progressText.classList.replace('text-emerald-300', 'text-teal-200');
+            }
+        }
     </script>
 </body>
 </html>
